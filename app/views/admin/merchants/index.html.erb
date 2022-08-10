@@ -47,7 +47,7 @@
 
       <div id="enabled-merchants">
         <tbody>
-          <% @enabled_merchants.each do |merchant| %>
+          <% Merchant.enabled_merchants.each do |merchant| %>
             <tr id="enabled-<%= merchant.id %>" scope="row">
                 <td><%= merchant.id %></td>
                 <td><%= link_to merchant.name, admin_merchant_path(merchant) %></td>
@@ -58,7 +58,6 @@
         </tbody>
       </div>
     </table>
-    <% render 'pagy_buttons' %>
   </div>
 
   <div class="col">

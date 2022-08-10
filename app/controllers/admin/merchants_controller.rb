@@ -3,7 +3,6 @@ class Admin::MerchantsController < ApplicationController
 
   def index
     @merchants = Merchant.all
-    @pagy, @enabled_merchants = pagy(Merchant.enabled_merchants, items: 10)
     @pagy, @disabled_merchants = pagy(Merchant.disabled_merchants, items: 10)
   end
 
