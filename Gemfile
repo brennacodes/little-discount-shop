@@ -30,6 +30,9 @@ gem "jbuilder"
 # Use HTTParty to make HTTP requests 
 gem "httparty"
 
+# Add holidays
+gem "holidays"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
