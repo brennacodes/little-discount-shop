@@ -4,6 +4,13 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 
 [**Click here to view the deployed application**](https://little-discounts-shop.herokuapp.com/)
 
+---
+## Table of Contents
+  [Goals](#goals)  
+  [Full Project Requirements](#project-requirements)  
+  [Database Schema](#database-schema)  
+  [Screenshots](#screenshots)  
+  [Tech Stach](#tech-stach)  
 ## Goals
 
 - [x] Use MVC to organize code effectively
@@ -18,9 +25,18 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 - [x] Write model tests that fully cover the data logic of the application
 - [x] Write feature tests that fully cover the functionality of the application
 - [x] Consume a public API while utilizing POROs as a way to apply OOP principles to organize code
+___
+## Project Requirements
 
-## Setup
+### [Click Here to View Part 1 of the Project Requirements](./project/README_pt1.md)
+### [Click Here to View Part 2 of the Project Requirements](./project/README_pt2.md)
+___
+## Database Schema
 
+___
+## Application Screenshots
+
+___
 ## Tech Stack
 
   ### Language & Framework:  
@@ -48,7 +64,7 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
   <img src="https://img.shields.io/badge/launchy-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />  
   <img src="https://img.shields.io/badge/orderly-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />  
   <img src="https://img.shields.io/badge/pry-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />
-  <img src="https://img.shields.io/badge/capybara-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />
+  <img src="https://img.shields.io/badge/capybara-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" /><br>
   <img src="https://img.shields.io/badge/shoulda--matchers-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />
   <img src="https://img.shields.io/badge/simplecov-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />  
   <img src="https://img.shields.io/badge/faker-E9573F.svg?&style=for-the-badge&logo=rubygems&logoColor=white" />
@@ -57,10 +73,3 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
   ### Public Holiday API:  
   <img src="https://img.shields.io/badge/Nager.Date-E9573F.svg?&style=for-the-badge&logo=nager&logoColor=white" />
 
-## Database Schema
-
-
-## Application Screenshots
-
-### [Click Here to View Part 1 of the Project Requirements](./project/README_pt1.md)
-### [Click Here to View Part 2 of the Project Requirements](./project/README_pt2.md)

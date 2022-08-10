@@ -67,7 +67,7 @@
 
     <div id="enabled-items">
       <tbody>
-        <% @merchants.enabled_items.each do |item| %>
+        <% @merchant.enabled_items.each do |item| %>
           <tr id="enable-<%=item.id%>" scope="row">
               <td><%= item.id %></td>
               <td><%= link_to item.name, merchant_item_path(@merchant, item) %></td>
