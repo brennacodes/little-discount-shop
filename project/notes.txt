@@ -1,0 +1,11 @@
+rails g model Merchant name:string status:integer
+rails g model Customer first_name:string last_name:string street:string city:string state:string zipcode:integer{5}
+rails g model Invoice customer:references status:integer
+rails g model Item merchant:references name:string description:string unit_price:integer status:integer
+rails g model InvoiceItem item:references invoice:references quantity:integer unit_price:integer status:integer
+rails g model Transaction invoice:references credit_card_number:bigint credit_card_expiration_date:datetime result:integer
+rails g model Discount merchant:references invoice:references percent:integer holiday_date:date 
+
+rails db:migrate VERSION= 
+
+bundle exec rake csv_load:create
