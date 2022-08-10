@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # Use Bootstrap 5 [https://getbootstrap.com/docs/5.0/getting-started/introduction/]
 gem "bootstrap"
 
+# Use pagy for pagination 
+gem "pagy"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
