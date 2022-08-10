@@ -1,0 +1,17 @@
+<h1>Invoices</h1>
+<table id="invoices" class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr scope="row">
+        <th><%= link_to invoice.id, admin_invoice_path(invoice) %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'pagy_buttons' %>

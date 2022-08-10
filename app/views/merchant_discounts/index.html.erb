@@ -1,0 +1,67 @@
+<h2>Upcoming Holidays</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Holiday</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% count = 1 %>
+    <% @holidays.next_three_holidays.each do |holiday| %>
+      <tr scope="row">
+        <td id="holiday-name-<%= count %>"><%= holiday[:name] %></td>
+        <td id="holiday-date-<%= count %>"><%= convert_and_format_date(holiday[:date]) %></td>
+        <% if Discount.holiday_discount_exists?(@merchant.id, holiday[:name]) %>
+          <% @discount = Discount.find_holiday_discount(holiday[:name]) %>
+          <td id="holiday-view-<%= count %>"><%= link_to 'View Discount', merchant_discount_path(@merchant, @discount), class: "btn btn-outline-primary btn-sm" %></td>
+        <% else %>
+          <td id="holiday-create-<%= count %>"><%= link_to 'Create Holiday Discount', new_merchant_discount_path(@merchant, discount: { name: holiday[:name], holiday_date: holiday[:date], percent: 30, qty_threshold: 2 }), class: "btn btn-outline-primary btn-sm" %></td>
+        <% end %>  
+      </tr>
+    <% count += 1 %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="row align-items-center">
+    <div class="col">
+      <h1 class="text-start">Bulk Discounts</h1>
+    </div>
+    <div class="col">
+      <%= link_to 'Create a New Bulk Discount', new_merchant_discount_path(@merchant), class: "btn btn-primary btn-sm" %>
+    </div>
+</div>
+
+<table id="discounts-table" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Percent Off</th>
+      <th scope="col">Quantity Threshold</th>
+      <th scope="col">Holiday Date (if applicable)</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discounts.each do |discount| %>
+      <tr id="<%= discount.id %>" scope="row">
+        <td id="<%= discount.id %>-percent"><%= discount.percent %>%</td>
+        <td id="<%= discount.id %>-qty"><%= discount.qty_threshold %></td>
+        <td id="<%= discount.id %>-holiday"><%= convert_and_format_date(discount.holiday_date) %></td>
+        <td id="<%= discount.id %>-view"><%= link_to "View Discount", merchant_discount_path(@merchant, discount.id), class: "btn btn-outline-primary", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" %></td>
+          <% if !discount.has_pending_invoices? %>
+            <td id="<%= discount.id %>-delete"><%= link_to "Delete Discount", delete_merchant_discount_path(@merchant, discount), data: {:confirm => 'Are you sure?'}, method: :delete, class: "btn btn-outline-danger", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" %></td>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

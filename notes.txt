@@ -1,0 +1,27 @@
+rails g model Merchant name:string status:integer
+rails g model Customer first_name:string last_name:string street:string city:string state:string zipcode:integer{5}
+rails g model Invoice customer:references status:integer
+rails g model Item merchant:references name:string description:string unit_price:integer status:integer
+rails g model InvoiceItem item:references invoice:references quantity:integer unit_price:integer status:integer
+rails g model Transaction invoice:references credit_card_number:bigint credit_card_expiration_date:datetime result:integer
+rails g model Discount merchant:references invoice:references percent:integer holiday_date:date 
+
+rails db:migrate VERSION=20220726153239
+rails db:migrate VERSION=20220726153245
+rails db:migrate VERSION=20220726153252
+rails db:migrate VERSION=20220726153305
+rails db:migrate VERSION=20220726153316
+rails db:migrate VERSION=20220726153325 
+rails db:migrate VERSION=20220726153331 
+
+rails db:drop
+rails db:create
+rails db:drop
+bundle exec rake csv_load:create_merchants
+bundle exec rake csv_load:create_customers
+bundle exec rake csv_load:create_items
+bundle exec rake csv_load:create_invoices
+bundle exec rake csv_load:create_invoice_items
+bundle exec rake csv_load:create_transactions
+
+5a15483894aefe94f3654fa63aeece04

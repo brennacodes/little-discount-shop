@@ -1,0 +1,112 @@
+<div class="row align-items-start">
+  <div class="col">  
+    <h2> Top 5 Items by Generated Revenue: </h2>
+    <table class="table" id="top-5-items">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Revenue Generated</th>
+          <th scope="col">Top Day</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @merchant.top_5_items.each do |item| %>
+        <tr id="top-item-<%= item.id %>">
+          <th><%= link_to item.name, merchant_item_path(@merchant, item) %></th>
+          <th id="item-<%= item.id %>-revenue"><%= format_price(item.revenue) %></th>
+          <th>Top Selling Day for Was: <%= format_date(item.top_day) %></th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <%= link_to "Create New Item", new_merchant_item_path(@merchant), method: :get, class: "btn btn-primary" %> 
+    <br>
+
+  </div>
+
+  <div class="col">
+    <h2>Items Ready to Ship</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody id="items-ready-to-ship">
+      <% @items_to_ship.each do |inv_item| %>
+        <tr scope="row">
+          <td><%= link_to inv_item.item.name, merchant_item_path(@merchant, inv_item.item_id) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  <%= render 'pagy_buttons' %>
+
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="row align-items-start">
+  <div class="col">
+    <h2>Enabled Items</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Status</th>
+          <th scope="col" colspan="3">Update Status</th>
+        </tr>
+      </thead>
+
+    <div id="enabled-items">
+      <tbody>
+        <% @merchant.enabled_items.each do |item| %>
+          <tr id="enable-<%=item.id%>" scope="row">
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, merchant_item_path(@merchant, item) %></td>
+              <td><%= item.status %></td>    
+              <td><%= button_to 'Disable', merchant_item_path(@merchant, item), method: :patch, params: { status: 'disabled', merchant_id: @merchant.id, item_id: item.id }, class: "btn btn-outline-warning", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </div>
+    </table>
+  </div>
+
+  <div class="col">
+    <h2>Disabled Items</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Status</th>
+          <th scope="col" colspan="3">Update Status</th>
+        </tr>
+      </thead>
+
+    <div id="disabled-items">
+      <tbody>
+        <% @merchant.disabled_items.each do |item| %>
+          <tr id="disable-<%=item.id%>" scope="row">
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, merchant_item_path(@merchant, item) %></td>
+              <td><%= item.status %></td>    
+              <td><%= button_to 'Enable', merchant_item_path(@merchant, item), method: :patch, params: { status: 'enabled', merchant_id: @merchant.id, item_id: item.id }, class: "btn btn-outline-success", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </div>
+    </table>
+  </div>
+</div>
+
+<br>
+

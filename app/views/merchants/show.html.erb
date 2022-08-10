@@ -1,0 +1,47 @@
+<p>
+  <h3><strong>Merchant Name:</strong> <%= @merchant.name %></h3>
+</p>
+
+<h3>Top 5 Customers:</h3>
+<ol id="top-5-customers">
+  <% @merchant.top_5_customers.each do |customer| %>
+    <li id="customer-<%= customer.id %>">
+      Name: <%= customer.first_name %> <%= customer.last_name %>
+      <br>
+      Successful Transactions:
+      <%= customer.successful_transactions %>
+    </li>
+    <br>
+  <% end %>
+</ol>
+
+
+<h3>Items Ready to Ship</h3>
+<table id="items-ready-to-ship" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Invoice ID</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @merchant.ready_to_ship.each do |inv_item| %>
+      <tr id="<%= inv_item.item_id %>" scope="row">
+        <td id="<%= inv_item.id %>-<%= inv_item.invoice_id %>-name"><%= link_to inv_item.item.name, "/merchants/#{@merchant.id}/items/#{inv_item.item_id}" %></td>
+        <td id="<%= inv_item.id %>-<%= inv_item.invoice_id %>-date"><%= format_date(inv_item.created_at) %></td>
+        <td id="<%= inv_item.id %>-<%= inv_item.invoice_id %>-id"><%= link_to inv_item.invoice_id, "/merchants/#{@merchant.id}/invoices/#{inv_item.invoice_id}" %></td>
+        <td id="<%= inv_item.id %>-<%= inv_item.invoice_id %>-price"><%= format_price(inv_item.unit_price) %></td>
+        <td id="<%= inv_item.id %>-<%= inv_item.invoice_id %>-qty"><%= inv_item.quantity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+<br>
+<br>

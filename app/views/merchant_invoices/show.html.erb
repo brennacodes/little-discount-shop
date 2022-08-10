@@ -1,0 +1,71 @@
+<p>
+  <strong>Invoice ID:</strong>
+  <%= @invoice.id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @invoice.status %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= format_date(@invoice.created_at) %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer.first_name %> <%= @invoice.customer.last_name %>
+</p>
+
+<br>
+
+<div id="<%= @invoice.id %>_total_revenue">
+  <strong>Total Revenue:</strong>
+  <%= format_price(@invoice.total_revenue) %>
+</div>
+
+<div id="<%= @invoice.id %>_total_discounted_revenue">
+  <strong>Discounted Revenue:</strong>
+  <%= format_price(@invoice.total_discounted_revenue) %>
+</div>
+
+<br>
+
+<h3>Items:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Item Status</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoice_items.each do |inv_item| %>
+      <tr id="inv-item-<%= inv_item.id %>">
+        <td><%= link_to inv_item.item.name, merchant_item_path(@merchant, inv_item.item.id) %></td>
+        <td><%= inv_item.quantity %></td>
+        <td><%= format_price(inv_item.unit_price) %></td>
+        <%= form_with(model: inv_item, url: merchant_invoice_item_url(@merchant, inv_item), local: true) do |form| %>
+          <td id="update_<%= inv_item.id %>_status"><%= form.select :status, ['pending', 'shipped', 'packaged'], selected: inv_item.status, params: { invoice_item: inv_item.id } %>
+          <%= form.submit "Update Invoice Item Status", class: "btn btn-outline-primary btn-sm"  %></td>
+        <% end %>
+        <% if inv_item.discount != nil %>
+          <td id="view-discount-<%= inv_item.discount.id %>"><%= link_to "View Discount", merchant_discount_path(@merchant, inv_item.discount.id), class: "btn btn-outline-primary btn-sm"  %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+<br>
+<br>
+ 

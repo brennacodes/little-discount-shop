@@ -1,0 +1,94 @@
+<div class="row align-items-center">
+  <div class="col"><h1>Admin Merchants</h1></div>
+
+  <div class="col"><%= link_to 'Create New Merchant', new_admin_merchant_path, class: "btn btn-primary btn-sm" %></div>
+</div>
+
+<br>
+
+ <h2> Top 5 Merchants by Generated Revenue: </h2>
+  <table scope="table" id="top_5_merchants"> 
+    <thead>
+      <tr>
+        <th>#</th>
+        <th scope="col">Merchant</th>
+        <th scope="col">Revenue</th>
+        <th scop="col">Top Day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% number = 1 %>
+      <% @merchants.top_5_merchants.each do |merchant| %>
+        <tr scope="row">
+            <td><%= number %></td>
+            <td><%= link_to merchant.name, admin_merchant_path(merchant) %></td>
+            <td><%= format_price(merchant.revenue) %></td>
+            <td><%= format_date(merchant.top_day) %></td>
+        </tr>
+        <% number += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<div class="row align-items-start">
+  <div class="col">
+    <h2>Enabled Merchants</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Merchant ID</th>
+          <th scope="col">Merchant Name</th>
+          <th scope="col">Update Status</th>
+          <th scope="col">Merchant Dashboard</th>
+        </tr>
+      </thead>
+
+      <div id="enabled-merchants">
+        <tbody>
+          <% @enabled_merchants.each do |merchant| %>
+            <tr id="enabled-<%= merchant.id %>" scope="row">
+                <td><%= merchant.id %></td>
+                <td><%= link_to merchant.name, admin_merchant_path(merchant) %></td>
+                <td><%= button_to 'Disable', admin_merchant_path(merchant), method: :patch, params: { id: merchant.id, name: merchant.name, status: 'disabled' }, class: "btn btn-outline-warning", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" %></td>
+                <td><%= link_to "View Dashboard", merchant_dashboard_path(merchant), class: "btn btn-primary btn-sm", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" %></td> 
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </table>
+    <% render 'pagy_buttons' %>
+  </div>
+
+  <div class="col">
+    <h2>Disabled Merchants</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Merchant ID</th>
+          <th scope="col">Merchant Name</th>
+          <th scope="col">Update Status</th>
+          <th scope="col">Merchant Dashboard</th>
+        </tr>
+      </thead>
+
+      <div id="disabled-merchants">
+        <tbody>
+          <% @disabled_merchants.each do |merchant| %>
+            <tr id="disabled-<%= merchant.id %>" scope="row">
+                <td><%= merchant.id %></td>
+                <td><%= link_to merchant.name, admin_merchant_path(merchant) %></td>  
+                <td><%= button_to 'Enable', admin_merchant_path(merchant), method: :patch, params: { id: merchant.id, name: merchant.name, status: 'enabled' }, class: "btn btn-outline-success", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  %></td> 
+                <td><%= link_to "View Dasboard", merchant_dashboard_path(merchant), class: "btn btn-primary btn-sm", style: "--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </table>
+    <%= render 'pagy_buttons' %>
+  </div>
+</div>
+
+<br>
+

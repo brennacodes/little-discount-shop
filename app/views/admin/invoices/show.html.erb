@@ -1,0 +1,47 @@
+<h3>Invoice ID: <%= @invoice.id %> </h3>
+
+<p>Status: <%= @invoice.status %></p>
+
+<p>Created on Date: <%= format_date(@invoice.created_at) %> </p>
+
+<p>Customer's Full Name: <%= @invoice.customer.first_name %> <%= @invoice.customer.last_name %> </p>
+
+<br>
+
+<h3>Items:</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.invoice_items.each do |inv_item| %>
+      <tr id="item-<%= inv_item.id %>" scope="row">
+        <td><%= inv_item.item_id %></td>
+        <td><%= inv_item.item.name %></td>
+        <td><%= inv_item.quantity %></td>
+        <td><%= format_price(inv_item.unit_price) %></td>
+        <td><%= inv_item.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h3>Total Revenue: <%= format_price(@invoice.total_revenue) %></h3>
+<h4>Discounted Revenue: <%= format_price(@invoice.total_discounted_revenue) %></h4>
+
+<br>
+
+<h5>Update Status</h5>
+<%= form_with url: "/admin/invoices/#{@invoice.id}", method: :patch, local: true do |f| %>
+  <%= f.select :status, ["cancelled", "in progress", "completed"], selected: @invoice.status %>
+  <%= f.submit "Update Status" %>
+<% end %>

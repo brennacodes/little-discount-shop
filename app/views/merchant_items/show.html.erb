@@ -1,0 +1,16 @@
+<p>
+  <strong>Item Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= format_price(@item.unit_price) %>
+</p>
+
+<%= link_to 'Edit Item', url: edit_merchant_item_url(@merchant, @item), class: "btn btn-outline-primary" %>

@@ -1,0 +1,27 @@
+<h1>Discount Information</h1>
+
+<table id="discounts-table">
+  <thead>
+    <tr>
+      <th>Discount/Holiday Name</th>
+      <th>Percentage</th>
+      <th>Quantity Threshold</th>
+      <th>Holiday Date (if applicable)</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr id="<%= @discount.id %>">
+        <td id="<%= @discount.id %>-name"><%= @discount.name %></td>
+        <td id="<%= @discount.id %>-percent"><%= @discount.percent %>%</td>
+        <td id="<%= @discount.id %>-qty"><%= @discount.qty_threshold %></td>
+        <td id="<%= @discount.id %>-holiday"><%= @discount.holiday_date %></td>
+        <td>
+          <% if !@discount.has_pending_invoices? %>
+            <%= link_to "Edit Bulk Discount", edit_merchant_discount_url(@merchant, @discount), class: "btn btn-outline-primary"  %>
+          <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>
