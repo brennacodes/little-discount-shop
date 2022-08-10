@@ -67,7 +67,7 @@
 
     <div id="enabled-items">
       <tbody>
-        <% @merchant.enabled_items.each do |item| %>
+        <% @enabled_items.each do |item| %>
           <tr id="enable-<%=item.id%>" scope="row">
               <td><%= item.id %></td>
               <td><%= link_to item.name, merchant_item_path(@merchant, item) %></td>
@@ -78,6 +78,7 @@
       </tbody>
     </div>
     </table>
+      <%= render 'pagy_buttons' %>
   </div>
 
   <div class="col">
@@ -94,7 +95,7 @@
 
     <div id="disabled-items">
       <tbody>
-        <% @merchant.disabled_items.each do |item| %>
+        <% @disabled_items.each do |item| %>
           <tr id="disable-<%=item.id%>" scope="row">
               <td><%= item.id %></td>
               <td><%= link_to item.name, merchant_item_path(@merchant, item) %></td>
@@ -105,6 +106,7 @@
       </tbody>
     </div>
     </table>
+      <%= render 'pagy_buttons' %>
   </div>
 </div>
 

@@ -4,6 +4,8 @@ class MerchantItemsController < ApplicationController
   def index
     @merchant = Merchant.find(params[:merchant_id])
     @pagy, @items_to_ship = pagy(@merchant.ready_to_ship, items: 10)
+    @pagy, @enabled_items = pagy(@merchant.enabled_items, items: 10)
+    @pagy, @disabled_items = pagy(@merchant.disabled_items, items: 10)
   end
 
   def edit
