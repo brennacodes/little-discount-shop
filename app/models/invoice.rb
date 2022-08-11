@@ -20,6 +20,10 @@ class Invoice < ApplicationRecord
     where.not(status: "cancelled")
   end
 
+  def unique_items
+    items.uniq!
+  end
+  
   def total_revenue
     invoice_items.sum { |invoice_item| invoice_item.total }
   end
