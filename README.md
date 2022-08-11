@@ -35,11 +35,26 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/bulk_discounts_schema.png">
 
 ## Application Screenshots
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.53.26 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.20.10 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.21.45 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.32.43 PM.png">
+
+| <b>Admin Merchants Index Page: View top-selling merchants, enable or disable merchants in the system.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png"> |
+
+| <b>Merchants Discounts Page: View and manage existing discounts, view upcoming holidays, create a discount for that holiday.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png"> |
+
+| <b>Merchants Invoice Show Page: View an invoice, its data including revenue, and all items on that invoice. </b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.20.10 PM.png"> |
+
+| <b>Merchants Items Index Page: View all of a merchant's items, including top-selling items, and items that are ready to ship. </b> |
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.21.45 PM.png"> |
+
+| <b>Merchant's Enabled and Disabled Items: click to quickly enable or disable items. Pagination helps break up long lists.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.32.43 PM.png"> |
 
 ## Tech Stack
 
