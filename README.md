@@ -42,7 +42,7 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 
 | <b>Merchants Discounts Page: View and manage existing discounts, view upcoming holidays, create a discount for that holiday.</b>|
 |:--:|
-| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png"> |
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.53.26 PM.png"> |
 
 | <b>Merchants Invoice Show Page: View an invoice, its data including revenue, and all items on that invoice. </b>|
 |:--:|
