@@ -39,7 +39,7 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.53.26 PM.png">
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.20.10 PM.png">
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.21.45 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.23.16 PM.png">
+<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.32.43 PM.png">
 
 ## Tech Stack
 
