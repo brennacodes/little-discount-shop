@@ -8,8 +8,8 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
   [Goals](#goals)  
   [Full Project Requirements](#project-requirements)  
   [Database Schema](#database-schema)  
-  [Screenshots](#screenshots)  
-  [Tech Stach](#tech-stach)  
+  [Screenshots](#application-screenshots)  
+  [Tech Stach](#tech-stack)  
   
 ## Goals
 
@@ -28,8 +28,8 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 
 ## Project Requirements
 
-### [Click Here to View Part 1 of the Project Requirements](./project/README_pt1.md)
-### [Click Here to View Part 2 of the Project Requirements](./project/README_pt2.md)
+[**Click Here to View Part 1 of the Project Requirements**](./project/README_pt1.md)  
+[**Click Here to View Part 2 of the Project Requirements**](./project/README_pt2.md)
 
 ## Database Schema
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/bulk_discounts_schema.png">
