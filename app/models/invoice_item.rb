@@ -16,6 +16,10 @@ class InvoiceItem < ApplicationRecord
     statuses.keys
   end
 
+  def discount_applied?
+    discount.present?
+  end
+
   def discount_percentage
     discount == nil ? 0 : discount.percent
   end
