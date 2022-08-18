@@ -5,10 +5,10 @@
 require 'faker'
 require 'factory_bot_rails'
 
-800.times do 
+100.times do 
   FactoryBot.create(:discount)
 end
 
-50.times do
+30.times do
   FactoryBot.create(:discount_invoice_item)
 end
