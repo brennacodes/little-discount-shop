@@ -1,8 +1,8 @@
-# Little Discounts Shop
+# Little Discount Shop
 
-Little Discounts Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. 
+Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. 
 
-[**Click here to view the deployed application**](https://little-discounts-shop.herokuapp.com/) **Note:** May not work on mobile. Also, you may need to wait a minute for the server to spin up and display the page. :) 
+[**Click here to view the deployed application**](https://little-discount-shop.herokuapp.com/) **Note:** May not work on mobile. Also, you may need to wait a minute for the server to spin up and display the page. :) 
 
 ## Table of Contents
   [Goals](#goals)  
