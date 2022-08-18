@@ -17,7 +17,7 @@ class InvoiceItem < ApplicationRecord
   end
 
   def discount_applied?
-    discount.present?
+    discount_invoice_item.present?
   end
 
   def discount_percentage
@@ -28,16 +28,16 @@ class InvoiceItem < ApplicationRecord
     quantity * unit_price
   end
 
-  def total_discounted(invoice_item)
-    (total - (quantity * ( unit_price * ( invoice_item_discount(invoice_item).percent / 100.0 ))))
+  def total_discounted
+    (total - (quantity * ( unit_price * ( discount.percent / 100.0 ))))
   end
 
   def total_discounted_price(invoice_item)
     if discount_applied? 
-      invoice_item.total_discounted(invoice_item)
+      invoice_item.total_discounted
     elsif !discount_applied? && discount_available?(invoice_item)
       apply_discount(invoice_item)
-      total_discounted(invoice_item)
+      invoice_item.total_discounted
     else
       total
     end
