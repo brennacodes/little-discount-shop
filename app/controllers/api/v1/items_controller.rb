@@ -1,6 +1,7 @@
 module Api
   module V1
     class ItemsController < ApplicationController
+      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
       before_action :set_item, only: %i[ show update destroy ]
 
       def index
@@ -25,8 +26,10 @@ module Api
       def update
         if @item.update(item_params)
           serialize_item(@item, :ok)
-        else
+        elsif item_params.any? == nil
           json_response(@item.errors, :unprocessable_entity)
+        else
+          json_not_found(find_type, params[find_type.to_sym])
         end
       end
 

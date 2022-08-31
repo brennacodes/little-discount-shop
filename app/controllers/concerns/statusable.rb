@@ -3,9 +3,12 @@ module Statusable
     render json: object, status: status
   end
 
-  def json_not_found(input)
-    json_response({ errors: "Could not find merchant with a name matching #{input}." }, :not_found) if input.is_a?(String)
-    json_response({ errors: "Could not find merchant with an id matching #{input}." }, :not_found) if input.is_a?(Integer)
+  def json_not_found(type, input)
+    json_response({ errors: "Could not find object with a name matching #{input}." }, :not_found) if type == "name"
+    json_response({ errors: "Could not find object with an id matching #{input}." }, :not_found) if type == "id"
+    json_response({ errors: "Could not find object with a description matching #{input}." }, :not_found) if type == "description"
+    json_response({ errors: "Could not find object with a unit_price matching #{input}." }, :not_found) if type == "unit_price"
+    json_response({ errors: "Could not find object with a merchant_id matching #{input}." }, :not_found) if type == "merchant_id"
   end
 
   def json_missing_input
