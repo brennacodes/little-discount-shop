@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'items requests' do
   let!(:merchant1) { Merchant.create!(name: "Billy Bob's Burgers") }
-  let!(:item1) { Item.create!(name: "Dip", description: "Hot", unit_price: 3.99, merchant_id: merchant1.id) }
-  let!(:item2) { Item.create!(name: "Burger", description: "Yummy", unit_price: 10.99, merchant_id: merchant1.id) }
-  let!(:item3) { Item.create!(name: "Bundle of hay", description: "Yowzas!", unit_price: 29.50, merchant_id: merchant1.id) }
+  let!(:item1) { Item.create!(name: "Dip", description: "Hot", unit_price: 399, merchant_id: merchant1.id) }
+  let!(:item2) { Item.create!(name: "Burger", description: "Yummy", unit_price: 1099, merchant_id: merchant1.id) }
+  let!(:item3) { Item.create!(name: "Bundle of hay", description: "Yowzas!", unit_price: 2950, merchant_id: merchant1.id) }
 
   it 'can return all items' do
     get api_v1_items_path
@@ -26,7 +26,7 @@ RSpec.describe 'items requests' do
     expect(item[:attributes][:description]).to eq(item1.description)
 
     expect(item[:attributes]).to have_key(:unit_price)
-    expect(item[:attributes][:unit_price]).to be_a(Float)
+    expect(item[:attributes][:unit_price]).to be_a(Integer)
     expect(item[:attributes][:unit_price]).to eq(item1.unit_price)
 
     expect(item[:attributes]).to have_key(:merchant_id)
@@ -53,8 +53,8 @@ RSpec.describe 'items requests' do
       expect(item[:data][:attributes][:description]).to eq('Hot')
 
       expect(item[:data][:attributes]).to have_key(:unit_price)
-      expect(item[:data][:attributes][:unit_price]).to be_a(Float)
-      expect(item[:data][:attributes][:unit_price]).to eq(3.99)
+      expect(item[:data][:attributes][:unit_price]).to be_a(Integer)
+      expect(item[:data][:attributes][:unit_price]).to eq(399)
     end
 
     it 'returns the proper error when item does not exist' do
@@ -69,7 +69,7 @@ RSpec.describe 'items requests' do
       item_params = {
         name: 'columbian coffee',
         description: 'dark roast, medium grind',
-        unit_price: 3.99,
+        unit_price: 399,
         merchant_id: merchant1.id
       }
       headers = { 'CONTENT_TYPE' => 'application/json' }

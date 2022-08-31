@@ -12,9 +12,14 @@ module Serializable
   def find_type
     return type = "name" if params[:name]
     return type = "description" if params[:description]
+    return type = "merchant_id" if params[:merchant_id]
     return type = "unit_price_max" if params[:unit_price_max]
     return type = "unit_price_min" if params[:unit_price_min]
     return type = "unit_price" if params[:unit_price]
-    return type = "merchant_id" if params[:merchant_id]
+    nil
+  end
+
+  def too_many_params
+    return true if [params[:name], params[:description], params[:merchant_id], params[:unit_price], params[:unit_price_max], params[:unit_price_min]].compact.count > 1
   end
 end

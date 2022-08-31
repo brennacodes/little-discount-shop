@@ -33,10 +33,17 @@ class Item < ApplicationRecord
   # these methods are for the api
   def self.find_by_input(type = "id", input)
     return find(input) if type == "id"
-    return where(merchant_id: input).order(merchant_id: :asc).first if type == "merchant_id"
+    return where(merchant_id: input).order(merchant_id: :asc).first if type == "merchant_id" 
     return where("name ILIKE ?", "%#{input}%").order(name: :asc).first if type == "name"
     return where("description ILIKE ?", "%#{input}%").order(description: :asc).first if type == "description"
+    self.find_by_unit_price(type, input)
+  end
+
+  def self.find_by_unit_price(type, input)
+    input = (input.to_i * 100)
     return where(unit_price: input).order(unit_price: :asc).first if type == "unit_price"
+    return where("unit_price < ?", input).order(unit_price: :asc).first if type == "unit_price_max"
+    return where("unit_price > ?", input).order(unit_price: :asc).first if type == "unit_price_min"
   end
 
   def self.find_all_by_input(type = "id", input)
@@ -44,6 +51,11 @@ class Item < ApplicationRecord
     return where(merchant_id: input).order(merchant_id: :asc) if type == "merchant_id"
     return where("name ILIKE ?", "%#{input}%").order(name: :asc) if type == "name"
     return where("description ILIKE ?", "%#{input}%").order(description: :asc) if type == "description"
+    self.find_all_by_unit_price(type, input)
+  end
+
+  def self.find_all_by_unit_price(type, input)
+    input = (input.to_i * 100)
     return where("unit_price < ?", input).order(unit_price: :asc) if type == "unit_price_max"
     return where("unit_price > ?", input).order(unit_price: :asc) if type == "unit_price_min"
   end

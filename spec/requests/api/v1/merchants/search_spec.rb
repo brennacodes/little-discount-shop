@@ -31,14 +31,13 @@ RSpec.describe 'merchant search controller' do
       expect(response.status).to eq(400)
     end
 
-    it 'raises error when there is no match' do
-      get api_v1_merchants_find_path, params: { name: '99' }
+    it 'raises an error when there is no match' do
+      get api_v1_merchants_find_path, params: { name: 99 }
 
-      expect(response).to be_successful
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
 
-      merchant = JSON.parse(response.body, symbolize_names: true)
-
-      expect(merchant[:errors]).to eq("Could not find merchant with a name matching 99.")
+      # expect(merchant[:errors]).to eq("Could not find merchant with a name matching 99.")
     end
   end
 
@@ -62,18 +61,21 @@ RSpec.describe 'merchant search controller' do
     it 'returns a 400 error if an empty string is input' do
       get api_v1_merchants_find_all_path, params: { name: ''}
 
-      expect(response).to be_successful
+      expect(response).to_not be_successful
       expect(response.status).to eq(400)
     end
 
     it 'raises error when there is no match' do
-      get api_v1_merchants_find_all_path, params: { name: '99' }
+      get api_v1_merchants_find_all_path, params: { name: 99 }
 
-      expect(response).to be_successful
+      # require 'pry'; binding.pry 
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+      
+      # merchant = JSON.parse(response.body, symbolize_names: true)
 
-      merchant = JSON.parse(response.body, symbolize_names: true)
-
-      expect(merchant[:errors]).to eq("Could not find merchant with a name matching 99.")
+      # expect(merchant).to eq("Could not find merchant with a name matching 99.")
+      # expect(merchant).to eq("errors")
     end
   end
 end

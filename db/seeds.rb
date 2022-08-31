@@ -9,6 +9,6 @@ require 'factory_bot_rails'
   FactoryBot.create(:discount)
 end
 
-30.times do
+20.times do
   FactoryBot.create(:discount_invoice_item)
 end
