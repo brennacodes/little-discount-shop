@@ -80,4 +80,13 @@ class Merchant < ApplicationRecord
       .first
       .created_at
   end
+
+  # these methods are for the api
+  def self.find_by_input(input)
+    where("name ILIKE ?", "%#{input}%").order(name: :asc).first
+  end
+
+  def self.find_all_by_input(input)
+    where("name ILIKE ?", "%#{input}%").order(name: :asc)
+  end
 end

@@ -26,6 +26,20 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 - [x] Write feature tests that fully cover the functionality of the application
 - [x] Consume a public API while utilizing POROs as a way to apply OOP principles to organize code
 
+## Little Discount Shop API
+This project also provides a RESTful API for the following resources:
+- Items
+  - return all items
+  - return a single item
+  - return the merchant for a specific item
+
+- Merchants
+  - return all merchants
+  - return a single merchant
+  - return all items for a specific merchant
+
+### [Click Here for API Endpoints & Data Output](./public/api_endpoints.md)
+
 ## Project Requirements
 
 ### [Click Here to View Part 1 of the Project Requirements](./project/README_pt1.md)
