@@ -9,7 +9,7 @@ Little Discount Shop is a fictitious e-commerce platform where merchants and adm
 
 ## Table of Contents
   [Goals](#goals)  
-  [API Endpoints](#api-endpoints)
+  [API Endpoints](#api-endpoints)  
   [Full Project Requirements](#project-requirements)  
   [Database Schema](#database-schema)  
   [Screenshots](#application-screenshots)  
