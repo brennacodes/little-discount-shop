@@ -134,7 +134,7 @@
           To search and return a merchant by name, send a GET request to the following URL:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find?name=<NAME></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find?name=&ltNAME&gt</code>
         </p>
         <p>
           This will return a JSON response in the following format:
@@ -168,7 +168,7 @@
           To search and return a merchant by their ID, send a GET request to the following URL:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find?id=<ID></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find?id=&ltID&gt</code>
         </p>
         <p>
           This will return a JSON response in the following format:
@@ -202,7 +202,7 @@
           To search and return a merchant by name, send a GET request to the following URL:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find_all?name=<NAME></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/merchants/find_all?name=&ltNAME&gt</code>
         </p>
         <p>
           Note that you may search for the full or partial name of a merchant. (e.g. "Schroeder-Jerde" or "Sc" or "s")
@@ -363,9 +363,9 @@
           To search for and return an item by name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?name=<NAME></code>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?description=<DESCRIPTION></code>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?unit_price=<UNIT_PRICE></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?name=&ltNAME&gt</code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?description=&ltDESCRIPTION&gt</code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?unit_price=&ltUNIT_PRICE&gt</code>
         </p>
         <p>
           This will return a single item as a JSON response in the following format:
@@ -402,9 +402,9 @@
           To search for and return all items matching a name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?name=<NAME></code>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?description=<DESCRIPTION></code>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price=<UNIT_PRICE></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?name=&ltNAME&gt</code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?description=&ltDESCRIPTION&gt</code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price=&ltUNIT_PRICE&gt</code>
         </p>
         <p>
           This will return all matching items as a JSON response in the following format:
@@ -441,8 +441,8 @@
           To search for and return all items matching a name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_max=<UNIT_PRICE></code>
-          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_min=<UNIT_PRICE></code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_max=&ltUNIT_PRICE&gt</code>
+          <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_min=&ltUNIT_PRICE&gt</code>
         </p>
         <p>
           This will return all matching items as a JSON response in the following format:
