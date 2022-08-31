@@ -38,7 +38,7 @@ This project also integrates a RESTful API for the following resources:
   - return a single merchant
   - return all items for a specific merchant
 
-### [Click Here for API Endpoints & Data Output](./public/api_endpoints.md)
+### [Click Here for API Endpoints & Data Output](./project/api_endpoints.md)
 
 ## Project Requirements
 
@@ -49,6 +49,10 @@ This project also integrates a RESTful API for the following resources:
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/bulk_discounts_schema.png">
 
 ## Application Screenshots
+
+| <b>Documentation page for the Little Discount Shop API.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-30 at 9.26.46 PM.png"> |
 
 | <b>Admin Merchants Index Page: View top-selling merchants, enable or disable merchants in the system.</b>|
 |:--:|
