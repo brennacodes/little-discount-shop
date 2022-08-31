@@ -1,11 +1,14 @@
 # Little Discount Shop
 
-Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. 
+Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. The backend and API were created using Ruby on Rails, and the frontend was styled with Bootstrap.
 
-[**Click here to view the deployed application**](https://little-discount-shop.herokuapp.com/) **Note:** You may need to wait a minute for the server to spin up and display the page. :) 
+[**Click here to view the deployed application**](https://little-discount-shop.herokuapp.com/)  
+[**Click here to read about the Little Discount Shop API**](#little-discount-shop-api)  
+**Note:** You may need to wait a minute for the server to spin up and display the page. :) 
 
 ## Table of Contents
   [Goals](#goals)  
+  [API Endpoints](#api-endpoints)
   [Full Project Requirements](#project-requirements)  
   [Database Schema](#database-schema)  
   [Screenshots](#application-screenshots)  
