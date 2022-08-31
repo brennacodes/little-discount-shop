@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get "/", to: "home#index"
       namespace :items do
         get '/find', controller: :search, action: :show
         get '/find_all', controller: :search, action: :index
