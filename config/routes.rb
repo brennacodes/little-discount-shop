@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'admin/dashboard#index'
+  root 'users#login'
+  
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   
   get "/merchants/:merchant_id/dashboard", to: "merchants#show", as: "merchant_dashboard"
   delete "/merchants/:merchant_id/discounts/:id", to: "merchant_discounts#destroy", as: "delete_merchant_discount"
