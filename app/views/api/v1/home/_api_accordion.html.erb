@@ -363,9 +363,11 @@
           To search for and return an item by name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
+        <pre>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?name=&ltNAME&gt</code>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?description=&ltDESCRIPTION&gt</code>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find?unit_price=&ltUNIT_PRICE&gt</code>
+        </pre>
         </p>
         <p>
           This will return a single item as a JSON response in the following format:
@@ -402,9 +404,11 @@
           To search for and return all items matching a name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
+        <pre>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?name=&ltNAME&gt</code>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?description=&ltDESCRIPTION&gt</code>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price=&ltUNIT_PRICE&gt</code>
+        </pre>
         </p>
         <p>
           This will return all matching items as a JSON response in the following format:
@@ -441,8 +445,10 @@
           To search for and return all items matching a name, description, or unit price, send a GET request to <em>one</em> of the following URLs:
         </p>
         <p>
+        <pre>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_max=&ltUNIT_PRICE&gt</code>
           <code>https://little-discount-shop.herokuapp.com/api/v1/items/:item_id/find_all?unit_price_min=&ltUNIT_PRICE&gt</code>
+        </pre>
         </p>
         <p>
           This will return all matching items as a JSON response in the following format:
