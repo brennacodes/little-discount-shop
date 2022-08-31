@@ -1,15 +1,15 @@
-# Little Discounts Shop
+# Little Discount Shop
 
-Little Discounts Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. 
+Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. 
 
-[**Click here to view the deployed application**](https://little-discounts-shop.herokuapp.com/)
+[**Click here to view the deployed application**](https://little-discount-shop.herokuapp.com/) **Note:** You may need to wait a minute for the server to spin up and display the page. :) 
 
 ## Table of Contents
   [Goals](#goals)  
   [Full Project Requirements](#project-requirements)  
   [Database Schema](#database-schema)  
-  [Screenshots](#screenshots)  
-  [Tech Stach](#tech-stach)  
+  [Screenshots](#application-screenshots)  
+  [Tech Stach](#tech-stack)  
   
 ## Goals
 
@@ -27,7 +27,7 @@ Little Discounts Shop is a fictitious e-commerce platform where merchants and ad
 - [x] Consume a public API while utilizing POROs as a way to apply OOP principles to organize code
 
 ## Little Discount Shop API
-This project also provides a RESTful API for the following resources:
+This project also integrates a RESTful API for the following resources:
 - Items
   - return all items
   - return a single item
@@ -42,18 +42,33 @@ This project also provides a RESTful API for the following resources:
 
 ## Project Requirements
 
-### [Click Here to View Part 1 of the Project Requirements](./project/README_pt1.md)
-### [Click Here to View Part 2 of the Project Requirements](./project/README_pt2.md)
+[**Click Here to View Part 1 of the Project Requirements**](./project/README_pt1.md)  
+[**Click Here to View Part 2 of the Project Requirements**](./project/README_pt2.md)
 
 ## Database Schema
 <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/bulk_discounts_schema.png">
 
 ## Application Screenshots
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.53.26 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.20.10 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.21.45 PM.png">
-<img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.23.16 PM.png">
+
+| <b>Admin Merchants Index Page: View top-selling merchants, enable or disable merchants in the system.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.50.59 PM.png"> |
+
+| <b>Merchants Discounts Page: View and manage existing discounts, view upcoming holidays, create a discount for that holiday.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 3.53.26 PM.png"> |
+
+| <b>Merchants Invoice Show Page: View an invoice, its data including revenue, and all items on that invoice. </b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.20.10 PM.png"> |
+
+| <b>Merchants Items Index Page: View all of a merchant's items, including top-selling items, and items that are ready to ship. </b> |
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.21.45 PM.png"> |
+
+| <b>Merchant's Enabled and Disabled Items: click to quickly enable or disable items. Pagination helps break up long lists.</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-10 at 7.32.43 PM.png"> |
 
 ## Tech Stack
 
