@@ -18,7 +18,6 @@ module Api
             merchant = Merchant.find(params[:id])
             serialize_merchant(merchant)
           elsif params[:name]
-            require 'pry'; binding.pry 
             merchant = Merchant.find_by_input(params[:name])
             serialize_merchant(merchant)
           else
