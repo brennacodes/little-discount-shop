@@ -13,4 +13,4 @@
   <%= format_price(@item.unit_price) %>
 </p>
 
-<%= link_to 'Edit Item', url: edit_merchant_item_url(@merchant, @item), class: "btn btn-outline-primary" %>
+<%= link_to 'Edit Item', edit_merchant_item_path(@merchant, @item), class: "btn btn-outline-primary" %>
