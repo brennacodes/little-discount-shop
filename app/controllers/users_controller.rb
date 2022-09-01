@@ -4,16 +4,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    # new instance of a user and catch validation checks
-    # save the password but it must be ENCRYPTED
-    # 1. uncomment BCrypt
-    # 2. added password_digest to users table
-    # 3. added `has_secure_password` to users model
-    #
-    # later: log them in, #authenticate to make sure user enters correct password
     user = User.new(user_params)
     if user.save
-      redirect_to root_path
+      redirect_to user_dashboard_path
       flash[:success] = "Welcome, #{user.username}!"
     else
       redirect_to '/users/new'
@@ -25,7 +18,6 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(username: params[:username])
-
     if user && user.authenticate(params[:password])
       if user.admin?
         redirect_to admin_dashboard_path
