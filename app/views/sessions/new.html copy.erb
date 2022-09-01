@@ -1,0 +1,35 @@
+<%= form_with model: @user, new_login_path, local: true do |form| %>
+
+    <div class="input-group">
+        <%= form.label :username, 'Username' %>
+        <%= form.text_field :username,  { class: "form-control", id: "exampleInputUsername", aria-describedby: "usernameHelp" } %>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp">
+        <div id="usernameHelp" class="form-text">You can use your email address.</div>
+    </div>
+
+    <div class="input-group">
+      <%= form.label :email, 'Username' %>
+      <%= form.text_field :email, { class: "form-control", id: "exampleInputUsername", aria-describedby: "emailHelp" } %>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We will never share this with anyone.</div>
+    </div>
+
+    <div class="input-group">
+      <%= form.label :password, 'Password', class: "form-label", for: "exampleInputPassword1" %>
+      <%= form.text_field :password, { type: "password", class: "form-control", id: "exampleInputPassword1" } %>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <div class="input-group">
+      <%= form.label :password_confirmation, 'Password Confirmation', { class: "form-label", for: "exampleInputPassword1" } %>
+      <%= form.text_field :password_confirmation, { type: "password-conf", class: "form-control", id: "exampleInputPassword2" } %>
+      <input type="password-conf" class="form-control" id="exampleInputPassword2">
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Click here to acknowledge how amazing you are.</label>
+    </div>
+
+  <%= form.submit, "Create User", { class: "btn btn-primary" } %>
+<% end %>

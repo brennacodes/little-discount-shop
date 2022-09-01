@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root 'users#login'
   
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/users/new', to: 'users#new', as: 'new_user'
+  post '/users/new', to: 'users#create', as: 'create_user'
   
+  get '/login', to: 'sessions#new', as: 'new_login'
+  post '/login', to: 'sessions#create', as: 'login'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
   get "/merchants/:merchant_id/dashboard", to: "merchants#show", as: "merchant_dashboard"
   delete "/merchants/:merchant_id/discounts/:id", to: "merchant_discounts#destroy", as: "delete_merchant_discount"
 
