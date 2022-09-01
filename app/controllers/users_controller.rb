@@ -25,12 +25,19 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(username: params[:username])
-    if user&.authenticate(params[:password])
-      redirect_to root_path
+
+    if user && user.authenticate(params[:password])
+      if user.admin?
+        redirect_to admin_dashboard_path
+      elsif user.manager?
+        redirect_to manager_dashboard_path
+      elsif user.default?
+        redirect_to user_dashboard_path
+      end
       flash[:success] = "Welcome back, #{user.username}!"
     else
-      redirect_to '/login'
-      flash[:error] = 'Invalid Credentials'
+      flash[:error] = "Yikes. That didn't go as planned. Try again?"
+      render :login_form
     end
   end
 

@@ -1,4 +1,4 @@
-class Admin::MerchantsController < ApplicationController
+class Admin::MerchantsController < Admin::BaseController
   include Pagy::Backend
 
   def index

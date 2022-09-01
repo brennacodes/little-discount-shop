@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root 'users#login'
+  root 'users#login_form'
   
   get '/users/new', to: 'users#new', as: 'new_user'
   post '/users/new', to: 'users#create', as: 'create_user'
-  
+
   get '/login', to: 'sessions#new', as: 'new_login'
   post '/login', to: 'sessions#create', as: 'login'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
