@@ -28,23 +28,30 @@ RSpec.describe 'merchant search controller' do
     it 'returns a 400 error if an empty string is input' do
       get api_v1_merchants_find_path, params: { name: ''}
 
+      expect(response).to_not be_successful
       expect(response.status).to eq(400)
+
+      merchant = JSON.parse(response.body, symbolize_names: true)
+
+      expect(merchant[:errors]).to eq("Please enter a valid search parameter and try again.")
     end
 
-    it 'raises an error when there is no match' do
-      get api_v1_merchants_find_path, params: { name: 99 }
+    it 'raises error when there is no match' do
+      get api_v1_merchants_find_path, params: { name: '99' }
 
       expect(response).to_not be_successful
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
 
-      # expect(merchant[:errors]).to eq("Could not find merchant with a name matching 99.")
+      merchant = JSON.parse(response.body, symbolize_names: true)
+
+      expect(merchant[:errors]).to eq("Please enter a valid search parameter and try again.")
     end
   end
 
   describe 'find all path' do
     it 'returns a all merchants that match search input' do
       get api_v1_merchants_find_all_path, params: { name: 'Bob' }
-
+      
       expect(response).to be_successful
 
       response = JSON.parse(response.body, symbolize_names: true)
@@ -66,16 +73,14 @@ RSpec.describe 'merchant search controller' do
     end
 
     it 'raises error when there is no match' do
-      get api_v1_merchants_find_all_path, params: { name: 99 }
+      get api_v1_merchants_find_all_path, params: { name: '99' }
 
-      # require 'pry'; binding.pry 
       expect(response).to_not be_successful
       expect(response.status).to eq(400)
-      
-      # merchant = JSON.parse(response.body, symbolize_names: true)
 
-      # expect(merchant).to eq("Could not find merchant with a name matching 99.")
-      # expect(merchant).to eq("errors")
+      merchant = JSON.parse(response.body, symbolize_names: true)
+
+      expect(merchant[:errors]).to eq("Please enter a valid search parameter and try again.")
     end
   end
 end

@@ -13,7 +13,7 @@ module Statusable
     json_response({ errors: "Could not find object with a unit_price under #{input}." }, :not_found) if type == "unit_price_max"
   end
 
-  def json_missing_input
+  def json_check_input
     json_response({ errors: "Please enter a valid search parameter and try again." }, :bad_request)
   end
 end

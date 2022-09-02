@@ -112,6 +112,16 @@ RSpec.describe Merchant, type: :model do
 
       expect(Merchant.disabled_merchants).to eq([merchant_1, merchant_2, merchant_3, merchant_4, merchant_5, merchant_6])
     end
+
+    it 'can find a merchant by user input' do
+      expect(Merchant.find_by_input("Billy Bob's Burgers")).to eq(merchant1)
+      expect(Merchant.find_by_input("bill")).to eq(merchant1)
+      expect(Merchant.find_by_input("Bob")).to eq(merchant1)
+    end
+
+    it 'can find all matching merchants by user input' do
+      expect(Merchant.find_all_by_input("Bob")).to eq([merchant1, merchant3])
+    end
   end
 
   describe 'instance methods' do
@@ -159,18 +169,6 @@ RSpec.describe Merchant, type: :model do
 
     it 'can return all of a merchants disabled items' do
       expect(merchant_1.disabled_items).to eq([item_1])
-    end
-  end
-
-  describe 'class methods' do
-    it 'can find a merchant by user input' do
-      expect(Merchant.find_by_input("Michael Jordan")).to eq(merchant_1)
-      expect(Merchant.find_by_input("Michael")).to eq(merchant_1)
-      expect(Merchant.find_by_input("Mi")).to eq(merchant_1)
-    end
-
-    it 'can find all matching merchants by user input' do
-      expect(Merchant.find_all_by_input("Jordan")).to eq([merchant_1, merchant_2, merchant_3])
     end
   end
 end

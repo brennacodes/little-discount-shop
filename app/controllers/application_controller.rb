@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Serializable
   include Statusable
+  include Typable
   
   helper_method :current_user
 

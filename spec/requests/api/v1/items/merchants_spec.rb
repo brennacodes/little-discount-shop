@@ -24,5 +24,9 @@ RSpec.describe 'item merchant controller' do
       get "/api/v1/items/#{item3.id + 1}/merchant"
 
       expect(response.status).to eq(404)
+
+      get "/api/v1/items/abcdefg/merchant"
+
+      expect(response.status).to eq(404)
     end
 end
