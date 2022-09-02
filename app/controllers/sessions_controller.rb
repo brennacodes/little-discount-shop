@@ -1,18 +1,16 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.find_by(email: params[:email]) || User.new
+    @user = User.find_by(username: params[:username]) || User.new
     session[:user] = @user
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:success] = "Welcome, #{user.email}!"
-      redirect_to root_path
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to admin_dashboard_path, notice: "Welcome, #{@user.username}!"
     else
-      flash[:error] = "Sorry, your credentials are bad."
-      render :new
+      render :new, alert: "Sorry, your credentials are bad."
     end
   end
 

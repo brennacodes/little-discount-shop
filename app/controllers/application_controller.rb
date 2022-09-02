@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include Statusable
   include Typable
   
-  helper_method :current_user
+  helper_method :current_user, :current_admin?
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]

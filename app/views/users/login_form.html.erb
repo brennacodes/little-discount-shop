@@ -1,9 +1,9 @@
 <%= form_with method: :post, local: true do |form| %>
   <%= form.label :username, 'Username:' %>
-  <%= form.text_field :username %>
+  <%= form.text_field :username, value: "admin" %>
 
   <%= form.label :password, 'Password:' %>
-  <%= form.text_field :password %>
+  <%= form.text_field :password, value: "admin" %>
   
   <%= form.submit 'Log In' %>
 <% end %>
