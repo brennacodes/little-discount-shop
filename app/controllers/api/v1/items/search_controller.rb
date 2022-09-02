@@ -2,53 +2,38 @@ module Api
   module V1
     module Items
       class SearchController < ApplicationController
+        # If there are too many parameters, or if the parameters are nil, then return a json error message. If
+        # the parameters are not nil, but the item is not found, then return a json error message. Otherwise,
+        # return the serialized item
         def index
-          if (too_many_params == true) || (nil_check == true)
-            json_missing_input
-          elsif check_input == nil
-            check = check_input
-            json_not_found(check[0], check[1])
-          else
-            serialize_item(Item.find_all_by_input(check_input[0], check_input[1]))
-          end
+          check = check_input
+          return json_check_input if too_many_params || check.values.any? == false
+            if check.keys[0].include?("price")
+              items = Item.find_all_by_input(check.keys[0], params[check.keys[0].to_sym].to_f)
+            elsif check.keys[0] == "merchant_id"
+              items = Item.find_all_by_input(check.keys[0], params[check.keys[0].to_sym].to_i)
+            else 
+              items = Item.find_all_by_input(check.keys[0], params[check.keys[0].to_sym])
+            end
+          return json_not_found(check.keys[0], params[check.keys[0].to_sym]) if items == []
+          serialize_item(items)
         end
 
         def show
-          if (too_many_params == true) || (nil_check == true)
-            json_missing_input
-          elsif check_input == nil
-            check = check_input
-            json_not_found(check[0], check[1])
-          else
-            item = Item.find_by_input(check_input[0], check_input[1])
-            return json_not_found(check_input[0], check_input[1]) if item == nil
-            serialize_item(item)
-          end
+          check = check_input
+          return json_check_input if too_many_params || check.values.any? == false
+            if check.keys[0].include?("price")
+              item = Item.find_by_input(check.keys[0], params[check.keys[0].to_sym].to_f)
+            elsif check.keys[0] == "merchant_id"
+              item = Item.find_by_input(check.keys[0], params[check.keys[0].to_sym].to_i)
+            else 
+              item = Item.find_by_input(check.keys[0], params[check.keys[0].to_sym])
+            end
+          return json_not_found(check.keys[0], params[check.keys[0].to_sym]) if item == []
+          serialize_item(item)
         end
 
         private
-          def nil_check
-            return true if check_input == nil
-          end
-
-          # It checks to see if the user has entered any search parameters, 
-          # and if not, it returns a 204 status code and an error message
-          def check_input
-            type = find_type
-            return nil if type == nil
-            if type == ("unit_price_max" || "unit_price_min" || "unit_price")
-              if (type == ("unit_price_min" || "unit_price")) && (params[type.to_sym].to_i < 0) 
-                return nil 
-              else
-                return [type, params[type.to_sym].to_i]
-              end
-            elsif params[type.to_sym].empty?
-              return nil
-            else
-              [type, params[type.to_sym]]
-            end
-          end
-
           def item_params
             params.permit(:name, :description, :unit_price, :merchant_id, :unit_price_max, :unit_price_min)
           end
