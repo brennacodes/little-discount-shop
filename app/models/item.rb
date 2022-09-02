@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  before_destroy :delete_empty_invoices
   belongs_to :merchant
 
   has_many :invoice_items
@@ -9,7 +8,14 @@ class Item < ApplicationRecord
 
   enum status: { disabled: 0, enabled: 1 }
   
-  validates_presence_of :merchant_id, :name, :description, :unit_price
+  after_destroy :delete_empty_invoices
+
+  validates_presence_of :description
+
+  validates_presence_of :unit_price, numericality: { greater_than: 0 }
+  validates_presence_of :merchant_id, only_integer: true
+  validates :name, presence: true, format: { with: /\D/, 
+                                  message: "must contain at least one letter" } 
   
   def status_options
     Item.statuses.keys
@@ -17,6 +23,23 @@ class Item < ApplicationRecord
 
   def delete_empty_invoices
     invoices.each { |inv| inv.items.distinct.count == 1 ? inv.destroy : nil }
+  end
+
+  def self.find_by_input(type = "id", input)
+    return find(input) if type == "id"
+    return where(merchant_id: input).order(merchant_id: :asc).first if type == "merchant_id"
+    return where("name ILIKE ?", "%#{input}%").order(name: :asc).first if type == "name"
+    return where("description ILIKE ?", "%#{input}%").order(description: :asc).first if type == "description"
+    return where(unit_price: input).order(unit_price: :asc).first if type == "unit_price"
+  end
+
+  def self.find_all_by_input(type = "id", input)
+    return find(input) if type == "id"
+    return where(merchant_id: input).order(merchant_id: :asc) if type == "merchant_id"
+    return where("name ILIKE ?", "%#{input}%").order(name: :asc) if type == "name"
+    return where("description ILIKE ?", "%#{input}%").order(description: :asc) if type == "description"
+    return where("unit_price < ?", input).order(unit_price: :asc) if type == "unit_price_max"
+    return where("unit_price > ?", input).order(unit_price: :asc) if type == "unit_price_min"
   end
 
   def self.enabled_items(id)
