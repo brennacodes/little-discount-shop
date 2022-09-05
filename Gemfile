@@ -24,12 +24,18 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+# Use Google OAuth2 for authentication
+gem "omniauth-google-oauth2"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 gem "jsonapi-serializer"
 
 # Use HTTParty to make HTTP requests 
-gem "httparty"
+# gem "httparty"
+
+# Use Faraday to make HTTP requests
+gem "faraday"
 
 # Add holidays
 gem "holidays"
@@ -92,9 +98,4 @@ group :test do
   # gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-end
-
-group :production do
-  gem 'faker'
-  gem 'factory_bot_rails'
 end
