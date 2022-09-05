@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/login', to: 'sessions#new', as: 'new_login'
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
   post '/login', to: 'sessions#create', as: 'login'
 
   get "/merchants/:merchant_id/dashboard", to: "merchants#show", as: "merchant_dashboard"

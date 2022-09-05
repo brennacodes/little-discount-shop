@@ -26,9 +26,24 @@
         <%= form.text_field :password_confirmation, { class: "form-control", id: "text-input-area", type: "password", required: true } %></p>
     </div>
 
-    <div class="position-relative pt-1">
-    <%= form.submit "Create Account", type: :submit, class: "btn btn-primary position-absolute top-50 start-0" %>
+    <table class="container position-relative pt-1">
+      <thead>
+        <tr class="row">
+          <th class="col-3 align-middle">
+            <%= form.submit "Create Account", type: :submit, class: "btn btn-primary position-absolute start-0" %>
+          </th>
+          <th class="col-5">
+            <button type="button" class="btn btn-outline darken-4 white black-text me-3">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" width="16" height="16"  />
+              Login with Google
+            </button>
+          </th>
+          <th class="col-3">
+            <%= link_to "Login Instead", login_path, class: "position-absolute end-0 mt-2" %></div>
+          </th>
+        </tr>
+      </thead>
+    </table>
 
-    <%= link_to "Click here to Login Instead", login_path, class: "position-absolute top-70 end-0" %></div>
 </div>
 <% end %>
