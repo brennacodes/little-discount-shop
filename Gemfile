@@ -27,6 +27,9 @@ gem "stimulus-rails"
 # Use Google OAuth2 for authentication
 gem "omniauth-google-oauth2"
 
+# Use Figaro to manage environment variables
+gem "figaro"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 gem "jsonapi-serializer"
@@ -60,6 +63,9 @@ gem "bootstrap"
 
 # Use pagy for pagination 
 gem "pagy"
+
+# Use Devise for authentication
+# gem "devise"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

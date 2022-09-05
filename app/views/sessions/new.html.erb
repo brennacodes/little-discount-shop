@@ -1,3 +1,27 @@
+<!-- The top of file index.html -->
+<html itemscope itemtype="http://schema.org/Article">
+<head>
+  <!-- BEGIN Pre-requisites -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+  </script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+  </script>
+  <!-- END Pre-requisites -->
+<!-- Continuing the <head> section -->
+  <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '330372150160-iog774jt3ittg6skpr37eevtt75bidbh.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+      });
+    }
+  </script>
+</head>
+
+
 <%= form_with url: login_url do |form| %>
 <div class="container col-6">
     <% @user.errors.full_messages_for(:subject).each do |message| %>
@@ -23,10 +47,16 @@
             <%= form.submit "Login", type: :submit, class: "btn btn-primary position-absolute start-0" %>
           </th>
           <th class="col-5">
-            <button type="button" class="btn btn-light darken-4 white black-text me-3 shadow-sm mb-5 bg-body rounded">
+            <button type="button" class="btn btn-light darken-4 white black-text me-3 shadow-sm mb-5 bg-body rounded" id="signinButton" href="<%= callback_path %>">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" width="16" height="16" targe="_blank" />
               Login with Google
             </button>
+            <script>
+              $('#signinButton').click(function() {
+                // signInCallback defined in step 6.
+                auth2.grantOfflineAccess().then(signInCallback);
+              });
+            </script>
           </th>
           <th class="col-3">
             <%= link_to "Create a New Account", new_user_path, class: "position-absolute end-0 mt-2" %></div>
@@ -38,3 +68,32 @@
 
 </div>
 <% end %>
+
+<script>
+function signInCallback(authResult) {
+  if (authResult['code']) {
+
+    // Hide the sign-in button now that the user is authorized, for example:
+    $('#signinButton').attr('style', 'display: none');
+
+    // Send the code to the server
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:3000/oauth2callback',
+      // Always include an `X-Requested-With` header in every AJAX request,
+      // to protect against CSRF attacks.
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response.
+      },
+      processData: false,
+      data: authResult['code']
+    });
+  } else {
+    // There was an error.
+  }
+}
+</script>
