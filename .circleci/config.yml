@@ -6,14 +6,14 @@ orbs:
 
 jobs:
   build:
-    working_directory: ~/moon_garden_fe
+    working_directory: ~/little-discount-shop
     docker:
-      - image: cimg/ruby:2.7.4-node
+      - image: cimg/ruby:3.1.2-node
         environment:
           PGHOST: localhost
           PGUSER: little-discount-shop
           RAILS_ENV: test
-      - image: postgres:13.2
+      - image: postgres:14.4
         environment:
           POSTGRES_USER: little-discount-shop
           POSTGRES_DB: little-discount-shop_test
