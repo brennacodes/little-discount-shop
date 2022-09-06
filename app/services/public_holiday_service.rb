@@ -1,15 +1,13 @@
-require 'httparty'
-
 class PublicHolidayService
-  attr_reader :info
-
-  def initialize
-    @base_url = "https://date.nager.at/api/v3/PublicHolidays/2022/US"
-    @info = get_info
+  def info
+    response = conn.get
+    JSON.parse(response.body, symbolize_names: true) 
   end
-
-  def get_info
-    response = HTTParty.get(@base_url)
-    JSON.parse(response.body, symbolize_names: true)
+  
+  private
+    def conn
+      Faraday.new("https://date.nager.at/api/v3/PublicHolidays/2022/US") do |faraday|
+      faraday.adapter Faraday.default_adapter
+    end
   end
 end
