@@ -25,9 +25,9 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Use Google OAuth2 for authentication
-gem "omniauth"
+# gem "omniauth"
 gem "omniauth-google-oauth2"
-gem "omniauth-rails_csrf_protection"
+# gem "omniauth-rails_csrf_protection"
 
 # Use Figaro to manage environment variables
 gem "figaro"
