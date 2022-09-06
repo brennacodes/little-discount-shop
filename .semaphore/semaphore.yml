@@ -9,9 +9,9 @@ blocks:
     task:
       env_vars:
         - name: DATABASE_URL
-          value: 'postgresql://localhost:5432/litt-discount-shop_production'
+          value: 'postgresql://localhost:5432/litt-discount-shop_development'
         - name: RAILS_ENV
-          value: production
+          value: development
       jobs:
         - name: Test
           commands:
