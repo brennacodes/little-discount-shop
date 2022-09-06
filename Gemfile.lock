@@ -175,13 +175,16 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-google-oauth2 (1.1.0)
+    omniauth-google-oauth2 (1.1.1)
       jwt (>= 2.0)
       oauth2 (~> 2.0.6)
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.8.0)
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
+      omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.1)
+      actionpack (>= 4.2)
       omniauth (~> 2.0)
     orderly (0.1.1)
       capybara (>= 1.1)
@@ -335,7 +338,9 @@ DEPENDENCIES
   importmap-rails
   jsonapi-serializer
   launchy
+  omniauth
   omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   orderly
   pagy
   pg (~> 1.1)

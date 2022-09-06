@@ -1,0 +1,10 @@
+<h1> Welcome to your dashboard, <%= current_user.username %> </h1>
+
+<h3>What would you like to do today?</h3>
+
+<div class="container">
+  <%= link_to "View Merchant Dashboard", merchant_dashboard_path(1), class: "btn btn-primary" %>
+  <%= link_to "View Merchant Invoices", merchant_invoices_path(1), class: "btn btn-primary" %>
+  <%= link_to "View Merchant Items", merchant_items_path(1), class: "btn btn-primary" %>
+  <%= link_to "View Merchant Discounts", merchant_discounts_path(1), class: "btn btn-primary" %>
+</div>
