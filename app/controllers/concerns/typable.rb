@@ -1,7 +1,6 @@
 module Typable
   def item_or_merchant
     return conditions("name") if params[:name]
-    require 'pry'; binding.pry 
     get_item_type
   end
 

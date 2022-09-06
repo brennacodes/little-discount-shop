@@ -84,11 +84,14 @@ RSpec.describe 'admin merchants index page', type: :feature do
   
 
   before do
-    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+    @admin = User.create!(username: "Admin", email: "admin@admin.com", password: "admin", role: 2)
 
     visit root_path
 
-    click_on "Login", match: :first
+    fill_in :username, with: @admin.username
+    fill_in :password, with: @admin.password
+
+    click_button "Login", match: :first
 
     click_on "Admin Dashboard"
 

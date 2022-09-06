@@ -20,7 +20,6 @@ module Api
         end
 
         def show
-          require 'pry'; binding.pry 
           check = check_input
           return json_check_input if too_many_params || check.values.any? == false
             if check.keys[0].include?("price")

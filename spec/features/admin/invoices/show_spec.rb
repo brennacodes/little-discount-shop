@@ -30,7 +30,19 @@ RSpec.describe 'admin invoices show page' do
       
   #  end
   before do
-    visit "/admin/invoices/#{invoice_1.id}"
+    @admin = User.create!(username: "Admin", email: "admin@admin.com", password: "admin", role: 2)
+
+    visit root_path
+
+    fill_in :username, with: @admin.username
+    fill_in :password, with: @admin.password
+
+    click_button "Login", match: :first
+
+    click_on "Admin Dashboard"
+
+    click_on "Invoices", match: :first
+    click_link "#{invoice_1.id}"
   end
 
    it 'invoice show page includes invoice id, status, created_at date, and customers name' do
