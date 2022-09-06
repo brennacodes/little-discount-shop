@@ -84,7 +84,15 @@ RSpec.describe 'admin merchants index page', type: :feature do
   
 
   before do
-    visit "/admin/merchants"
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+
+    visit root_path
+
+    click_on "Login", match: :first
+
+    click_on "Admin Dashboard"
+
+    click_on "Merchants", match: :first
   end
 
   describe 'creates a new merchant' do
