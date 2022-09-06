@@ -7,11 +7,7 @@ agent:
 blocks:
   - name: Test
     task:
-      env_vars:
-        - name: DATABASE_URL
-          value: 'postgresql://localhost:5432/litt-discount-shop_development'
-        - name: RAILS_ENV
-          value: development
+      env_vars: []
       jobs:
         - name: Test
           commands:
