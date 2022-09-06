@@ -17,12 +17,13 @@ blocks:
           commands:
             - checkout
             - sem-service start postgres 14
-            - sem-version ruby 3.0.1
+            - sem-version ruby 3.1.2
             - cache restore
             - bundle install --deployment --path vendor/bundle
             - cache store
             - 'bundle exec rake db:setup'
             - bundle exec rspec
+            - rspec --format RspecJunitFormatter --out rspec.xml
       epilogue:
         on_pass:
           commands:
