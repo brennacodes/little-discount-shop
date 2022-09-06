@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'auth/sessions#new'
   
   resources :users, only: [:new, :create]
 
   get '/dashboard', to: 'users#show', as: 'user_dashboard'
 
-  get '/logout', to: 'sessions#destroy', as: 'logout'
-  get '/login', to: 'sessions#new', as: 'new_login'
-  post '/login', to: 'sessions#create', as: 'login'
+  get '/logout', to: 'auth/sessions#destroy', as: 'logout'
+  get '/login', to: 'auth/sessions#new', as: 'new_login'
+  post '/login', to: 'auth/sessions#create', as: 'login'
 
   get '/auth/google_oauth2', to: 'auth/oauth#create', as: 'callback'
   get '/auth/google_oauth2/callback', to: 'auth/oauth#omniauth'
-  # post '/oauth2callback', to: 'users#show', as: 'oauth2callback'
 
   get "/merchants/:merchant_id/dashboard", to: "merchants#show", as: "merchant_dashboard"
   delete "/merchants/:merchant_id/discounts/:id", to: "merchant_discounts#destroy", as: "delete_merchant_discount"

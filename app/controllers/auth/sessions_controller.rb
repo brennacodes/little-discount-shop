@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Auth::SessionsController < ApplicationController
   def new
     @user = User.find_by(username: params[:username]) || User.new
     session[:user] = @user

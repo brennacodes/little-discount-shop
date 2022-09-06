@@ -3,7 +3,6 @@ class Auth::OauthController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     if auth_hash['credentials']['token'].present?
       find_user
-      # redirect_to user_dashboard_path
     else
       redirect_to login_path, alert: "Sorry, it seems we had trouble processing your request."
     end
