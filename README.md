@@ -1,6 +1,6 @@
 # Little Discount Shop
 
-Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. The backend and API were created using Ruby on Rails, and the frontend was styled with Bootstrap.
+Little Discount Shop is a fictitious e-commerce platform where merchants and admins can track sales, manage inventory, and fulfill customer invoices. This project was created in two parts over the course of two weeks. Extensions added later include general authentication for users, Google OAuth2 login, authorization, and the server-side API. The backend and API were created using Ruby on Rails, and the frontend was styled with the help of Bootstrap.
 
 [**Click here to read about the Little Discount Shop API**](#little-discount-shop-api)  
 
@@ -16,18 +16,11 @@ Little Discount Shop is a fictitious e-commerce platform where merchants and adm
   [Tech Stach](#tech-stack)  
   
 ## Goals
-
-- [x] Use MVC to organize code effectively
-- [x] Follow REST principles 
-- [x] Use TDD to help develop clean, maintainable code
-- [x] Design a normalized database schema and defining model relationships
-- [x] Write migrations to create tables and relationships between tables
-- [x] Implement CRUD functionality for a resource using forms (form_tag or form_with), buttons, and links
+- [x] Use MVC, REST principles, and TDD to develop organized, clean, maintainable code
+- [x] Design normalized database schema and define model relationships
+- [x] Implement CRUD functionality for resources
 - [x] Utilize advanced routing techniques including namespacing
 - [x] Utilize advanced active record techniques to perform complex database queries
-- [x] Use ActiveRecord methods to join multiple tables of data, make calculations, and group data based on one or more attributes
-- [x] Write model tests that fully cover the data logic of the application
-- [x] Write feature tests that fully cover the functionality of the application
 - [x] Consume a public API while utilizing POROs as a way to apply OOP principles to organize code
 
 ## Little Discount Shop API
@@ -36,11 +29,15 @@ This project also integrates a RESTful API for the following resources:
   - return all items
   - return a single item
   - return the merchant for a specific item
+  - search for an item by name, description, or unit price
+  - search for all items that match a given name, description, unit price, maximum unit price, minimum unit price, or items within a price range
 
 - Merchants
   - return all merchants
   - return a single merchant
   - return all items for a specific merchant
+  - search for a merchant by name
+  - search for all merchants that match a given name
 
 ### [Click Here for API Endpoints & Data Output](./project/api_endpoints.md)
 
@@ -57,6 +54,10 @@ This project also integrates a RESTful API for the following resources:
 | <b>Documentation page for the Little Discount Shop API.</b>|
 |:--:|
 | <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/Screen Shot 2022-08-30 at 9.26.46 PM.png"> |
+
+| <b>Google OAuth2 Login</b>|
+|:--:|
+| <img src="https://github.com/brennacodes/little-discount-shop/blob/main/project/img/oauth_login.png"> |
 
 | <b>Admin Merchants Index Page: View top-selling merchants, enable or disable merchants in the system.</b>|
 |:--:|
