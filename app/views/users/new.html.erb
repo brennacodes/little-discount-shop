@@ -1,5 +1,5 @@
 <%= form_with url: login_url do |form| %>
-<div class="container col-6">
+  <div class="container col-6">
     <% @user.errors.full_messages_for(:subject).each do |message| %>
       <div>
         <%= message %>
@@ -33,10 +33,10 @@
             <%= form.submit "Create Account", type: :submit, class: "btn btn-primary position-absolute start-0" %>
           </th>
           <th class="col-5">
-            <button type="button" class="btn btn-outline darken-4 white black-text me-3">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" width="16" height="16"  />
+            <a class="oauth-container btn btn-light darken-4 white black-text me-3 shadow-sm mb-5 bg-body rounded" href='/auth/google_oauth2' target="_blank" >
+                <img alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" width="16" height="16" />
               Login with Google
-            </button>
+            </a>
           </th>
           <th class="col-3">
             <%= link_to "Login Instead", login_path, class: "position-absolute end-0 mt-2" %></div>
@@ -44,6 +44,5 @@
         </tr>
       </thead>
     </table>
-
-</div>
+  </div>
 <% end %>

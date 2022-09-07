@@ -1,21 +1,11 @@
 module Typable
-  def item_or_merchant
-    return conditions("name") if params[:name]
-    require 'pry'; binding.pry 
-    get_item_type
-  end
-
-  def get_item_type
-    return "name" if item_params[:name]
-    return "description" if item_params[:description]
-    return "merchant_id" if item_params[:merchant_id]
-    evaluate_price_params
-  end
-
-  def evaluate_price_params
-    return "unit_price_max" if item_params[:unit_price_max]
-    return "unit_price_min" if item_params[:unit_price_min]
-    return "unit_price" if item_params[:unit_price]
+  def find_type
+    return "name" if params[:name] || item_params[:name]
+    return "description" if params[:description] || item_params[:description]
+    return "merchant_id" if params[:merchant_id] || item_params[:merchant_id]
+    return "unit_price_max" if params[:unit_price_max] || item_params[:unit_price_max]
+    return "unit_price_min" if params[:unit_price_min] || item_params[:unit_price_min]
+    return "unit_price" if params[:unit_price] || item_params[:unit_price]
     return "error"
   end
 
@@ -52,18 +42,12 @@ module Typable
   end
 
   def check_input
-    type = item_or_merchant
+    type = find_type
     conditions(type)
   end
 
-  def paramalyzer
-    parms = params.keys[0..-3]
-    return true if parms.length > 1 && parms.include?("name") || parms.include?("description") || parms.include?("merchant_id") || parms.include?("unit_price")
-    return min_max_price
-  end
-
   def too_many_params
-    params.keys[0..-3]
+    return true if [params[:name], params[:description], params[:merchant_id], params[:unit_price], params[:unit_price_max], params[:unit_price_min]].compact.count > 1
     false
   end
 end

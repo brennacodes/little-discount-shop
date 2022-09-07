@@ -84,7 +84,18 @@ RSpec.describe 'admin merchants index page', type: :feature do
   
 
   before do
-    visit "/admin/merchants"
+    @admin = User.create!(username: "Admin", email: "admin@admin.com", password: "admin", role: 2)
+
+    visit root_path
+
+    fill_in :username, with: @admin.username
+    fill_in :password, with: @admin.password
+
+    click_button "Login", match: :first
+
+    click_on "Admin Dashboard"
+
+    click_on "Merchants", match: :first
   end
 
   describe 'creates a new merchant' do

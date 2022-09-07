@@ -7,7 +7,18 @@ RSpec.describe 'admin invoices index' do
   let!(:invoice_3) { Invoice.create!(customer_id: sally.id, status: 1) }
 
   before do
-    visit "/admin/invoices"
+    @admin = User.create!(username: "Admin", email: "admin@admin.com", password: "admin", role: 2)
+
+    visit root_path
+
+    fill_in :username, with: @admin.username
+    fill_in :password, with: @admin.password
+
+    click_button "Login", match: :first
+
+    click_on "Admin Dashboard"
+
+    click_on "Invoices", match: :first
   end
 
   it 'has list of all Invoice ids in the system' do

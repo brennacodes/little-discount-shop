@@ -66,7 +66,16 @@ RSpec.describe 'admin dashboard' do
   let!(:transaction_29) { Transaction.create!(result: 0, invoice_id: invoice_9.id, credit_card_number: "123456789") }
 
   before do
-    visit '/admin'
+    @admin = User.create!(username: "Admin", email: "admin@admin.com", password: "admin", role: 2)
+
+    visit root_path
+
+    fill_in :username, with: @admin.username
+    fill_in :password, with: @admin.password
+
+    click_button "Login", match: :first
+
+    click_on "Admin Dashboard"
   end
 
   it 'has a header titled admin dashboard' do

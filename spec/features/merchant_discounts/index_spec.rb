@@ -104,27 +104,27 @@ RSpec.describe 'merchant discounts index page', type: :feature do
       end
 
       within "#holiday-name-1" do
-        expect(page).to have_content("Labour Day")
-      end
-
-      within "#holiday-name-2" do
         expect(page).to have_content("Columbus Day")
       end
 
-      within "#holiday-name-3" do
+      within "#holiday-name-2" do
         expect(page).to have_content("Veterans Day")
       end
 
+      within "#holiday-name-3" do
+        expect(page).to have_content("Thanksgiving Day")
+      end
+
       within "#holiday-date-1" do
-        expect(page).to have_content("September 05")
+        expect(page).to have_content("Monday, October 10, 2022")
       end
 
       within "#holiday-date-2" do
-        expect(page).to have_content("October 1")
+        expect(page).to have_content("Friday, November 11, 2022")
       end
 
       within "#holiday-date-3" do
-        expect(page).to have_content("November 1")
+        expect(page).to have_content("Thursday, November 24, 2022")
       end
     end
 
@@ -141,7 +141,7 @@ RSpec.describe 'merchant discounts index page', type: :feature do
 
       expect(current_path).to eq("/merchants/#{merchant.id}/discounts/new")
 
-      expect(find_field('Name').value).to eq("Labour Day")
+      expect(find_field('Name').value).to eq("Columbus Day")
       expect(find_field('Percent').value).to eq("30")
       expect(find_field('discount[qty_threshold]').value).to eq("2")
     end

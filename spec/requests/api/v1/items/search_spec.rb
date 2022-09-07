@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'item find controller', type: :request do
   let!(:merchant1) { Merchant.create!(name: "Billy Bob's Burgers") }
   let!(:merchant2) { Merchant.create!(name: "Jumpin' Jack's Jams") }
-  let!(:item1) { Item.create!(name: "Dip", description: "Hot", unit_price: 3.99, merchant_id: merchant1.id) }
-  let!(:item2) { Item.create!(name: "Burger", description: "Yummy", unit_price: 10.99, merchant_id: merchant1.id) }
-  let!(:item3) { Item.create!(name: "Bundle of hay", description: "Yowzas!", unit_price: 29.50, merchant_id: merchant1.id) }
-  let!(:item4) { Item.create!(name: "X", description: "X!", unit_price: 3.99, merchant_id: merchant2.id) }
+  let!(:item1) { Item.create!(name: "Dip", description: "Hot", unit_price: 399, merchant_id: merchant1.id) }
+  let!(:item2) { Item.create!(name: "Burger", description: "Yummy", unit_price: 1099, merchant_id: merchant1.id) }
+  let!(:item3) { Item.create!(name: "Bundle of hay", description: "Yowzas!", unit_price: 2955, merchant_id: merchant1.id) }
+  let!(:item4) { Item.create!(name: "X", description: "X!", unit_price: 399, merchant_id: merchant2.id) }
 
   describe 'item search' do
     describe 'happy path' do
@@ -16,9 +16,12 @@ RSpec.describe 'item find controller', type: :request do
         expect(response).to be_successful
         
         items = JSON.parse(response.body, symbolize_names: true)
+        items = items[:data]
 
-        expect(items[:data]).to be_an(Array)
-        expect(items[:data].count).to eq 2
+        expect(items).to be_an(Array)
+        expect(items.count).to eq 2
+        expect(items.first[:attributes][:name]).to eq(item3.name)
+        expect(items.last[:attributes][:name]).to eq(item2.name)
       end
 
       it 'can return all matches for a description search' do
@@ -27,31 +30,38 @@ RSpec.describe 'item find controller', type: :request do
         expect(response).to be_successful
 
         items = JSON.parse(response.body, symbolize_names: true)
+        items = items[:data]
 
-        expect(items[:data]).to be_an(Array)
-        expect(items[:data].count).to eq 2
+        expect(items).to be_an(Array)
+        expect(items.count).to eq 2
+        expect(items.first[:attributes][:name]).to eq(item3.name)
+        expect(items.last[:attributes][:name]).to eq(item2.name)
       end
 
-      it 'can return all matches for a max_unit_price search' do
-        get api_v1_items_find_all_path, params: { unit_price_max: '15.00' }
+      xit 'can return all matches for a max_unit_price search' do
+        get api_v1_items_find_all_path, params: { unit_price_max: '1500' }
 
         expect(response).to be_successful
 
         items = JSON.parse(response.body, symbolize_names: true)
+        items = items[:data]
 
-        expect(items[:data]).to be_an(Array)
-        expect(items[:data].count).to eq 3
+        expect(items).to be_an(Array)
+        expect(items.count).to eq 3
+        expect(items).to eq([item1, item2, item4])
       end
 
-      it 'can return all matches for a min_unit_price search' do
+      xit 'can return all matches for a min_unit_price search' do
         get api_v1_items_find_all_path, params: { unit_price_min: '15.00' }
 
         expect(response).to be_successful
 
         items = JSON.parse(response.body, symbolize_names: true)
+        items = items[:data]
 
-        expect(items[:data]).to be_an(Array)
-        expect(items[:data].count).to eq 1
+        expect(items).to be_an(Array)
+        expect(items.count).to eq 1
+        expect(items).to eq([item3])
       end
 
       it 'can return all matches for a merchant_id search' do
@@ -60,9 +70,12 @@ RSpec.describe 'item find controller', type: :request do
         expect(response).to be_successful
 
         items = JSON.parse(response.body, symbolize_names: true)
+        items = items[:data]
 
-        expect(items[:data]).to be_an(Array)
-        expect(items[:data].count).to eq 3
+        expect(items).to be_an(Array)
+        expect(items.count).to eq 3
+        expect(items.first[:attributes][:name]).to eq(item1.name)
+        expect(items.last[:attributes][:name]).to eq(item3.name)
       end
     end
 

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'auth/sessions#new'
   
-  resources :users, only: [:new, :create]
+  get '/register', to: 'users#new', as: 'register'
+  post '/register', to: 'users#create'
 
   get '/dashboard', to: 'users#show', as: 'user_dashboard'
 
