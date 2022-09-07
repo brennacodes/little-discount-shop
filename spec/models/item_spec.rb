@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
       invoice = Invoice.create!(customer_id: customer.id, status: 0)
       invoice_item = InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice.id, quantity: 1, unit_price: 100, status: 0)
 
-      expect(item_1.top_day).to eq(invoice.created_at)
+      expect(item_1.top_day.strftime('%m %d, %Y')).to eq(invoice.created_at.strftime('%m %d, %Y'))
     end
   end      
 
