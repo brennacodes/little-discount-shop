@@ -1,14 +1,13 @@
-## PR for Issue/User Story #(s): 
-> 
+## PR for Issues/User Story #(s): 
   
-### Fixes: 
+- [ ] **Fixes**: 
 > - 
-### Completes:
+- [ ] **Completes**:
 > - 
-### Updates:
+- [ ] **Updates**:
 > - 
 
-### Needs attention:
-- 
+- [ ] **Needs attention**:  
+> -  
 
 **Other Notes**:
