@@ -16,7 +16,7 @@ jobs:
       - image: postgres:14.4
         environment:
           POSTGRES_USER: little-discount-shop
-          POSTGRES_DB: little-discount-shop_test
+          POSTGRES_DB: little_discount_shop_test
           POSTGRES_PASSWORD:
     steps:
       - checkout
