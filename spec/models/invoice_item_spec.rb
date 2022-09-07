@@ -43,7 +43,7 @@ RSpec.describe InvoiceItem, type: :model do
     end
 
     it 'can return the total discounted' do
-      expect(invoice_item_1.total_discounted(invoice_item_1)).to eq(400)
+      expect(invoice_item_1.total_discounted).to eq(400)
     end
 
     it 'can return whether or not a discount is applied' do

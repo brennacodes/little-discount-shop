@@ -61,7 +61,7 @@
           <%= form.submit "Update Invoice Item Status", class: "btn btn-outline-primary btn-sm"  %></td>
         <% end %>
         <% if inv_item.discount != nil %>
-          <td id="view-discount-<%= inv_item.discount.id %>"><%= link_to "View Discount", merchant_discount_path(@merchant, inv_item.discount.id), class: "btn btn-outline-primary btn-sm"  %></td>
+          <td id="view-discount-<%= inv_item.id %>"><%= link_to "View Discount", merchant_discount_path(@merchant, inv_item.discount.id), class: "btn btn-outline-primary btn-sm"  %></td>
         <% end %>
       </tr>
     <% end %>

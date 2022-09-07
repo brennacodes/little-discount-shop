@@ -13,7 +13,7 @@ RSpec.describe 'merchant invoice show page', type: :feature do
   let!(:invoice1_transaction_1) { invoice_1.transactions.create!(result: 0, credit_card_number: 1234567890123456, credit_card_expiration_date: nil) }
   let!(:invoice1_transaction_2) { invoice_1.transactions.create!(result: 1, credit_card_number: 1234567890987653, credit_card_expiration_date: nil) }
   let!(:invoice_item_1) { InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_1.id, quantity: 5, unit_price: item_1.unit_price, status: 1) }
-  let!(:invoice_item_2) { InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_1.id, quantity: 10, unit_price: item_2.unit_price, status: 1) }
+  let!(:invoice_item_2) { InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_1.id, quantity: 1, unit_price: item_2.unit_price, status: 1) }
   let!(:discount_1) { Discount.create!(merchant_id: merchant_1.id, percent: 20, qty_threshold: 2) }
   let!(:discount_2) { Discount.create!(merchant_id: merchant_1.id, percent: 22, qty_threshold: 10) }
   let!(:discount_invoice_item) { DiscountInvoiceItem.create!(invoice_item_id: invoice_item_1.id, discount_id: discount_1.id) }
@@ -58,7 +58,7 @@ RSpec.describe 'merchant invoice show page', type: :feature do
   describe 'revenue' do
     it 'shows the invoices total revenue' do
       within "##{invoice_1.id}_total_revenue" do
-        expect(page).to have_content("25.0")
+        expect(page).to have_content("7.0")
       end
     end
     
@@ -70,14 +70,14 @@ RSpec.describe 'merchant invoice show page', type: :feature do
 
         discounted = invoice_1.total_discounted_revenue
 
-        expect(page).to have_content("$19.6")
+        expect(page).to have_content("$6.0")
       end
     end
 
     it 'has a link to view the bulk discount that was applied' do
       expect(page).to have_link("View Discount")
-
-      within "#view-discount-#{discount_1.id}" do
+      
+      within "#view-discount-#{invoice_item_1.id}" do
         expect(page).to have_link("View Discount")
       end
 

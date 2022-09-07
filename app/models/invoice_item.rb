@@ -29,7 +29,7 @@ class InvoiceItem < ApplicationRecord
   end
 
   def total_discounted
-    (total - (quantity * ( unit_price * ( discount.percent / 100.0 ))))
+    total - (quantity * ( unit_price * ( discount.percent / 100.0 )))
   end
 
   def total_discounted_price(invoice_item)

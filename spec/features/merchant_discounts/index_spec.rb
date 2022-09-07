@@ -108,23 +108,23 @@ RSpec.describe 'merchant discounts index page', type: :feature do
       end
 
       within "#holiday-name-2" do
-        expect(page).to have_content("Columbus Day")
-      end
-
-      within "#holiday-name-3" do
         expect(page).to have_content("Veterans Day")
       end
 
+      within "#holiday-name-3" do
+        expect(page).to have_content("Thanksgiving Day")
+      end
+
       within "#holiday-date-1" do
-        expect(page).to have_content("September 05")
+        expect(page).to have_content("Monday, October 10, 2022")
       end
 
       within "#holiday-date-2" do
-        expect(page).to have_content("October 1")
+        expect(page).to have_content("Friday, November 11, 2022")
       end
 
       within "#holiday-date-3" do
-        expect(page).to have_content("November 1")
+        expect(page).to have_content("Thursday, November 24, 2022")
       end
     end
 
