@@ -34,12 +34,12 @@ workflows:
   build-deploy:
   jobs:
     - build
-    - deploy:
+    - heroku/deploy-via-git:
       requires:
       - build
       branches:
           only: main
-          executor: heroku/default
+      executor: heroku/default
       steps:
         - checkout
         - heroku/install
