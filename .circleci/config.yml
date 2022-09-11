@@ -3,6 +3,15 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2 
+  heroku: circleci/heroku@x.y
+
+workflows:
+  ruby_circle_ci:
+    jobs:
+      - build
+  heroku_deploy:
+    jobs:
+      - deploy
 
 jobs:
   build:
@@ -28,3 +37,9 @@ jobs:
       - checkout
       - run: bundle install --path vendor/bundle
       - run: bundle exec rspec
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
