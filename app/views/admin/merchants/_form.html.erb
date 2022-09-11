@@ -1,3 +1,5 @@
+<%= render 'admin/nav' %>
+
 <%= form_with(model: [:admin, @merchant], local: true) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

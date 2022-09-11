@@ -1,0 +1,8 @@
+<%= content_for :top_five %>
+  <ol>
+    <% Customer.top_5_customers.each do |customer| %>
+      <li>Name: <%= customer.first_name %> <%= customer.last_name %>
+        Total Successful Transactions: <%= customer.successful_transactions %></li>
+    <% end %>
+  </ol>
+<% end %>

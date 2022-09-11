@@ -25,3 +25,25 @@
 
     <%= form.submit 'Submit' %>
 <% end %>
+
+<% content_for :nav_brand do %>
+  <a class="navbar-brand" href="/api/v1">Merchant Discount</a>
+<% end %>
+
+<% content_for :nav_links do %>
+  <li class="nav-item">
+    <a class="nav-link" href="/merchants/<%= @merchant.id %>/dashboard">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/merchants/<%= @merchant.id %>/invoices">Invoices</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/merchants/<%= @merchant.id %>/items">Items</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/merchants/<%= @merchant.id %>/discounts">Discounts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/api/v1">API</a>
+  </li>
+<% end %>
