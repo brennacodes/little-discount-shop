@@ -17,3 +17,16 @@
 For more information on how to use the API, please click on the links below.
   <%= render 'api_accordion' %>
 </p>
+
+<% content_for :nav_brand do %>
+  <a class="navbar-brand">API</a>
+<% end %>
+
+<% content_for :nav_links do %>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= admin_dashboard_path %>">Admin Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/merchants/1/dashboard">Merchant Dasboard</a>
+  </li>
+<% end %>

@@ -340,7 +340,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   orderly
   pagy
-  pg (~> 1.1)
+  pg
   pry
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
