@@ -36,6 +36,6 @@ workflows:
     - build
     - heroku/deploy-via-git:
       requires:
-      - build
+        - build
       branches:
           only: main
