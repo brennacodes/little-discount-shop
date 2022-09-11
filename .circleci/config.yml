@@ -6,12 +6,16 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 workflows:
-  build_deploy:
+  ruby_circle_ci:
     jobs:
       - build
+  heroku_deploy:
+    requires:
+      - ruby_circle_ci
+    jobs:
       - deploy
 
-jobs:      
+jobs:
   build:
     working_directory: ~/little-discount-shop
     docker:
@@ -35,14 +39,11 @@ jobs:
       - checkout
       - run: bundle install --path vendor/bundle
       - run: bundle exec rspec
-    deploy:
-      executor: heroku/default
-      requires:
-        - build
-      branches:
-        only: main
-      steps:
-        - checkout
-        - heroku/install
-        - heroku/deploy-via-git
-
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+        branches:
+          only: main
