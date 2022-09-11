@@ -6,45 +6,38 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 workflows:
-  ruby_circle_ci:
+  build_deploy:
     jobs:
-      - build
-  heroku_deploy:
-    requires:
-      - build 
-    branches:
-        only:
-        - main
-    jobs:
-      - deploy
+      build:
+        working_directory: ~/little-discount-shop
+        docker:
+          - image: cimg/ruby:3.1.2-node
+            environment:
+              PGHOST: localhost
+              PGUSER: little-discount-shop
+              RAILS_ENV: test
+          - image: postgres:14.4
+            environment:
+              POSTGRES_USER: little-discount-shop
+              POSTGRES_DB: little_discount_shop_test
+              POSTGRES_PASSWORD:
+        steps:
+          - checkout
+          - run:
+              name: little-discount-shop
+              command: bundle -v
+          - ruby/bundle-install
 
-jobs:
-  build:
-    working_directory: ~/little-discount-shop
-    docker:
-      - image: cimg/ruby:3.1.2-node
-        environment:
-          PGHOST: localhost
-          PGUSER: little-discount-shop
-          RAILS_ENV: test
-      - image: postgres:14.4
-        environment:
-          POSTGRES_USER: little-discount-shop
-          POSTGRES_DB: little_discount_shop_test
-          POSTGRES_PASSWORD:
-    steps:
-      - checkout
-      - run:
-          name: little-discount-shop
-          command: bundle -v
-      - ruby/bundle-install
-
-      - checkout
-      - run: bundle install --path vendor/bundle
-      - run: bundle exec rspec
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - heroku/deploy-via-git
+          - checkout
+          - run: bundle install --path vendor/bundle
+          - run: bundle exec rspec
+      deploy:
+        executor: heroku/default
+        steps:
+          - checkout
+          - heroku/install
+          - heroku/deploy-via-git
+            requires:
+              - build
+            branches:
+                only: main
