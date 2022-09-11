@@ -10,6 +10,11 @@ workflows:
     jobs:
       - build
   heroku_deploy:
+    requires:
+      - build 
+    branches:
+        only:
+        - main
     jobs:
       - deploy
 
