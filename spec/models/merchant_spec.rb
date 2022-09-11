@@ -160,7 +160,7 @@ RSpec.describe Merchant, type: :model do
     it 'can find all of a merchants invoices' do
       invoices = merchant_1.merchants_invoices
 
-      expect(invoices).to eq([invoice_3, invoice_1, invoice_2, invoice, invoice_8])
+      expect(invoices).to eq([invoice, invoice_1, invoice_2, invoice_3, invoice_8])
     end
 
     it 'can return all of a merchants enabled items' do
