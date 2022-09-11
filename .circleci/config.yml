@@ -32,12 +32,12 @@ workflows:
         - run: bundle install --path vendor/bundle
         - run: bundle exec rspec
     deploy:
+      requires:
+        - build 
+      branches:
+          only: main 
       executor: heroku/default
       steps:
         - checkout
         - heroku/install
-        - heroku/deploy-via-git:
-          requires:
-            - build 
-          branches:
-              only: main 
+        - heroku/deploy-via-git
