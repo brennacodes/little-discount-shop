@@ -13,7 +13,11 @@ workflows:
     requires:
       - ruby_circle_ci
     jobs:
-      - deploy
+      - deploy:
+        requires:
+          - build
+        branches:
+            only: main
 
 jobs:
   build:
@@ -45,5 +49,3 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
-        branches:
-          only: main
