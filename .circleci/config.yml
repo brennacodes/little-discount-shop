@@ -31,11 +31,17 @@ jobs:
       - run: bundle exec rspec
   deploy:
     executor: heroku/default
-    requires:
-    - build
-    branches:
-        only: main
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git:
+      - heroku/deploy-via-git
+
+workflows:
+  build-deploy:
+  jobs:
+    - build
+    - deploy:
+      requires:
+      - build
+      branches:
+          only: main
