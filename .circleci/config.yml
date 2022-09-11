@@ -36,17 +36,13 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git
 
-
 workflows:
-  ruby_circle_ci:
+    heroku_deploy:
     jobs:
-      - build
-  heroku_deploy:
-    requires:
-      - ruby_circle_ci
-    jobs:
-      - deploy:
-        requires:
-          - build
-        branches:
-            only: main
+        - build
+        - heroku_deploy:
+            requires:
+            - build # only run deploy-via-git job if the build job has completed
+            filters:
+            branches:
+                only: main # only run deploy-via-git job on main branch
