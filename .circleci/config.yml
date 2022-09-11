@@ -48,4 +48,4 @@ workflows:
       requires:
         - build
       branches:
-          only: main
+        only: main
