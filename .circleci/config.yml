@@ -8,6 +8,16 @@ orbs:
 workflows:
   heroku_deploy:
   jobs:
+    - build
+    - deploy:
+      requires:
+      - build
+      branches:
+          only: main
+
+workflows:
+  heroku_deploy:
+  jobs:
     build:
       working_directory: ~/little-discount-shop
       docker:
@@ -33,10 +43,6 @@ workflows:
         - run: bundle exec rspec
     deploy:
       executor: heroku/default
-      requires:
-        - build 
-      branches:
-          only: main 
       steps:
         - checkout
         - heroku/install
