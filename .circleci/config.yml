@@ -29,12 +29,6 @@ jobs:
       - checkout
       - run: bundle install --path vendor/bundle
       - run: bundle exec rspec
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - heroku/install
-      - heroku/deploy-via-git
 
 workflows:
   build-deploy:
@@ -45,3 +39,8 @@ workflows:
       - build
       branches:
           only: main
+          executor: heroku/default
+      steps:
+        - checkout
+        - heroku/install
+        - heroku/deploy-via-git
