@@ -30,6 +30,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/coverage/
+coverage/*
+
 # Ignore application configuration
-/config/application.yml
+config/application.yml
+
+# Ignore .github folder
+.github/*
