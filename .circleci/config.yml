@@ -47,5 +47,3 @@ workflows:
     - deploy:
       requires:
         - build
-      branches:
-        only: main
