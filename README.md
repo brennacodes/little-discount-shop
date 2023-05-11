@@ -4,7 +4,7 @@ Little Discount Shop is a fictitious e-commerce platform where merchants and adm
 
 [**Click here to read about the Little Discount Shop API**](#little-discount-shop-api)  
 
-[**Click here to view the deployed application**](https://little-discount-shop.herokuapp.com/)  
+[**Click here to view the deployed application**](https://discount-shop.brennacodes.com/)  
 **Note:** You may need to wait a minute for the server to spin up and display the page. :) 
 
 ## Table of Contents
@@ -93,8 +93,8 @@ This project also integrates a *(mostly)* RESTful API for the following resource
   <p>
   <img src="https://img.shields.io/badge/git-F05032.svg?&style=for-the-badge&logo=git&logoColor=white" />
   <img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
-  <img alt="Heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white"/>
   <img src="https://img.shields.io/badge/vscode-007ACC.svg?&style=for-the-badge&logo=visualstudiocode&logoColor=white" />
+  <img  alt="Fly.io" src="https://img.shields.io/badge/fly.io-blueviolet?style=for-the-badge" />
   </p>
 
   ### Database:  

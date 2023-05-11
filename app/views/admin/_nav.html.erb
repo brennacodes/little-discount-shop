@@ -1,0 +1,18 @@
+<% content_for :nav_brand do %>
+  <a class="navbar-brand" href="<%= admin_dashboard_path %>">Admin</a>
+<% end %>
+
+<% content_for :nav_links do %>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= admin_dashboard_path %>">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/admin/invoices">Invoices</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/admin/merchants">Merchants</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/api/v1">API</a>
+  </li>
+<% end %>

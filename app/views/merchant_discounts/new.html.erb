@@ -1,3 +1,5 @@
+<%= render 'shared/merchant_nav' %>
+
 <h1>Create New Bulk Discount</h1>
     
 <%= render 'form', discount: @discount %>
@@ -6,4 +8,3 @@
   <% @conflicting_discounts = Discount.discount_conflicts?(@discount) %>
   <%= render 'conflicts', conflicts: @conflicting_discounts %>
 <% end %>
-

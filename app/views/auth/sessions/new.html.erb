@@ -1,3 +1,10 @@
+<% content_for :nav_brand do %>
+  <a class="navbar-brand" >Login</a>
+<% end %>
+
+<% content_for :nav_links do %>
+<% end %>
+
 <%= form_with url: login_url, local: true do |form| %>
   <div class="container col-6">
     <div class="input-group py-2">
