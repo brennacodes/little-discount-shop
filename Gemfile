@@ -107,3 +107,4 @@ group :test do
   gem "webdrivers"
   gem "rspec_junit_formatter"
 end
+gem "dockerfile-rails", ">= 1.2", :group => :development
