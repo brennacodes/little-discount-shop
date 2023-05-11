@@ -4,7 +4,7 @@ Little Discount Shop is a fictitious e-commerce platform where merchants and adm
 
 [**Click here to read about the Little Discount Shop API**](#little-discount-shop-api)  
 
-[**Click here to view the deployed application**](https://discount-shop.brenna.codes/)  
+[**Click here to view the deployed application**](https://discount-shop.brennacodes.com/)  
 **Note:** You may need to wait a minute for the server to spin up and display the page. :) 
 
 ## Table of Contents
