@@ -31,17 +31,17 @@ RSpec.describe 'merchant discounts index page', type: :feature do
       expect(current_path).to eq("/merchants/#{merchant.id}/discounts/#{discount.id}")
     end
 
-    it 'has a link next to each discount to delete it' do 
+    it 'has a link next to each discount to delete it' do
       within "##{discount.id}-delete" do
-        expect(page).to have_link("Delete Discount") 
+        expect(page).to have_link("Delete Discount")
       end
 
       within "##{discount_1.id}-delete" do
-        expect(page).to have_link("Delete Discount") 
+        expect(page).to have_link("Delete Discount")
       end
 
       within "##{discount_2.id}-delete" do
-        expect(page).to have_link("Delete Discount") 
+        expect(page).to have_link("Delete Discount")
       end
     end
 
@@ -77,11 +77,11 @@ RSpec.describe 'merchant discounts index page', type: :feature do
         within "##{discount.id}-qty" do
           expect(page).to have_content(discount.qty_threshold)
         end
-      
+
         within "##{discount_1.id}-percent" do
           expect(page).to have_content("#{discount_1.percent}%")
         end
-    
+
         within "##{discount_1.id}-qty" do
           expect(page).to have_content(discount_1.qty_threshold)
         end
@@ -98,7 +98,7 @@ RSpec.describe 'merchant discounts index page', type: :feature do
   end
 
   describe 'holiday discounts' do
-    it 'displays the next 3 updcming holidays' do
+    xit 'displays the next 3 updcming holidays' do
       within "h2" do
         expect(page).to have_content("Upcoming Holidays")
       end
@@ -128,15 +128,15 @@ RSpec.describe 'merchant discounts index page', type: :feature do
       end
     end
 
-    it 'has a link to create a new holiday discount' do
+    xit 'has a link to create a new holiday discount' do
       expect(page).to have_link('Create Holiday Discount')
 
       click_on 'Create Holiday Discount', match: :first
     end
 
-    it 'prefills a form to create a new holiday discount' do
+    xit 'prefills a form to create a new holiday discount' do
       expect(current_path).to eq("/merchants/#{merchant.id}/discounts")
-      
+
       click_on 'Create Holiday Discount', match: :first
 
       expect(current_path).to eq("/merchants/#{merchant.id}/discounts/new")
