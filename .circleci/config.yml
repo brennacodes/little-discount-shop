@@ -77,12 +77,11 @@ jobs:
 workflows:
   build_test_deploy:
     jobs:
-      - build:
-      - test:
+      - build
+      - test
       - deploy:
           requires:
             - test
           filters:
             branches:
               only: main
-
