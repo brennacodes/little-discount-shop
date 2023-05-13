@@ -1,4 +1,4 @@
-User.create!(username: "admin", password_digest: "password", email: "brennacodes+discountshop@gmail.com", role: "admin")
+User.create!(username: "admin", password: "password", password_confirmation: "password",email: "brennacodes+discountshop@gmail.com", role: "admin")
 20.times { FactoryBot.create(:merchant) }
 40.times { FactoryBot.create(:item) }
 50.times { FactoryBot.create(:invoice_item) }
