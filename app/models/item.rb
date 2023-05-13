@@ -7,16 +7,16 @@ class Item < ApplicationRecord
   has_many :customers, through: :invoices
 
   enum status: { disabled: 0, enabled: 1 }
-  
+
   after_destroy :delete_empty_invoices
 
   validates_presence_of :description
 
   validates_presence_of :unit_price, numericality: { greater_than: 0 }
   validates_presence_of :merchant_id, only_integer: true
-  validates :name, presence: true, format: { with: /\D/, 
-                                  message: "must contain at least one letter" } 
-  
+  validates :name, presence: true, format: { with: /\D/,
+                                  message: "must contain at least one letter" }
+
   def status_options
     Item.statuses.keys
   end
@@ -45,7 +45,7 @@ class Item < ApplicationRecord
   def self.enabled_items(id)
     where(merchant_id: id, status: "enabled")
   end
-  
+
   def self.disabled_items(id)
     where(merchant_id: id, status: "disabled")
   end
@@ -61,7 +61,7 @@ class Item < ApplicationRecord
   # these methods are for the api
   def self.find_by_input(type = "id", input)
     return find(input) if type == "id"
-    return where(merchant_id: input).order(merchant_id: :asc).first if type == "merchant_id" 
+    return where(merchant_id: input).order(merchant_id: :asc).first if type == "merchant_id"
     return where("name ILIKE ?", "%#{input}%").order(name: :asc).first if type == "name"
     return where("description ILIKE ?", "%#{input}%").order(description: :asc).first if type == "description"
     self.find_by_unit_price(type, input)

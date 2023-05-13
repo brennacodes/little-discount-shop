@@ -15,7 +15,7 @@ class Auth::SessionsController < ApplicationController
       end
       flash[:success] = "Welcome, #{@user.username}!"
     else
-      render :new, alert: "Sorry, your credentials are bad."
+      render :new, alert: "Sorry, we were unable to log you in with those credentials."
     end
   end
 
