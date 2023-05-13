@@ -11,8 +11,10 @@ class Auth::SessionsController < ApplicationController
       if @user.admin?
         redirect_to admin_dashboard_path
       else
-        redirect_to user_dashboard_path, notice: "Welcome, #{@user.username}!"
+        redirect_to user_dashboard_path
       end
+      flash[:success] = "Welcome, #{@user.username}!"
+      require 'pry'; binding.pry
     else
       render :new, alert: "Sorry, your credentials are bad."
     end

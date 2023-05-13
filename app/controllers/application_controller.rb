@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   include Serializable
   include Statusable
   include Typable
-  
-  helper_method :current_user, :current_admin?
+
+  helper_method :current_user, :current_admin?, :alert_type
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
@@ -17,4 +17,17 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do |e|
     json_response({ message: e.message }, :not_found)
   end
+
+  def alert_type
+    if flash[:notice]
+      "primary"
+    elsif flash[:success]
+      "success"
+    elsif flash[:error] || flash[:alert]
+      "danger"
+    else
+      nil
+    end
+  end
+
 end
