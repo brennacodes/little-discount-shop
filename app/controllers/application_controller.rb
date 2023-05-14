@@ -1,14 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include Flashable
   include Serializable
   include Statusable
   include Typable
-  include Flashable
 
   helper_method :current_user,
                 :current_admin?,
                 :alert_type,
-                :flash_message
+                :flash_message,
+                :has_flash_message?,
+                :check_flash_message
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
