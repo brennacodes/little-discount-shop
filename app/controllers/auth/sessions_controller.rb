@@ -8,12 +8,12 @@ class Auth::SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:success] = "Welcome, #{@user.username}!"
       if @user.admin?
         redirect_to admin_dashboard_path
       else
         redirect_to user_dashboard_path
       end
-      flash[:success] = "Welcome, #{@user.username}!"
     else
       render :new, alert: "Sorry, we were unable to log you in with those credentials."
     end
