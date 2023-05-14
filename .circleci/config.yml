@@ -42,12 +42,6 @@ commands:
     steps:
       - checkout
       - run: bundle install
-  seed_data:
-    steps:
-      - checkout
-      - run:
-          name: Seed Database
-          command: bin/rails db:{drop,create,migrate,seed}
   run_tests:
     steps:
       - checkout
@@ -59,7 +53,6 @@ jobs:
     executor: app
     steps:
       - install_dependencies
-      - seed_data
   test:
     executor: app
     steps:
