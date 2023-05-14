@@ -41,12 +41,6 @@ commands:
   install_dependencies:
     steps:
       - checkout
-      - run:
-          name: be
-          command: bundle -v
-      - ruby/bundle-install
-
-      - checkout
       - run: bundle install
   seed_data:
     steps:
@@ -57,18 +51,17 @@ commands:
   run_tests:
     steps:
       - checkout
+      - run: bin/rails db:{create,migrate}
       - run: bundle exec rspec
 
 jobs:
   build:
     executor: app
     steps:
-      - checkout
       - install_dependencies
   test:
     executor: app
     steps:
-      - checkout
       - install_dependencies
       - run_tests
   deploy:
@@ -76,7 +69,6 @@ jobs:
       image: ubuntu-2204:2022.04.2
       docker_layer_caching: true
     steps:
-      - checkout
       - install_flyctl
       - seed_data
       - deploy_to_fly_platform
