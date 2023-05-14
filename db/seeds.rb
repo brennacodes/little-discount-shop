@@ -1,7 +1,5 @@
-User.destroy_all
-
 User.create!(username: "admin", password: "password", password_confirmation: "password", email: "brennacodes+discountshop@gmail.com", role: "admin")
-10.times { FactoryBot.create(:user) }
+5.times { FactoryBot.create(:user) }
 20.times { FactoryBot.create(:merchant) }
 50.times { FactoryBot.create(:customer) }
 60.times { FactoryBot.create(:invoice) }
