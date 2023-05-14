@@ -47,7 +47,7 @@ commands:
 
       - checkout
       - run: bundle install
-      - run: bin/rails db:{create,migrate,seed}
+      - run: bin/rails db:seed
   run_tests:
     steps:
       - checkout
