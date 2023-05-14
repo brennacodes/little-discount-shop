@@ -12,13 +12,13 @@ executors:
       - image: cimg/ruby:3.1.2-node
         environment:
           PGHOST: localhost
-          PGUSER: little-discount-shop
+          PGUSER: discount_shop
           RAILS_ENV: test
       - image: postgres:14.4
         environment:
-          POSTGRES_USER: little-discount-shop
-          POSTGRES_DB: little_discount_shop_test
-          POSTGRES_PASSWORD:
+          POSTGRES_USER: discount_shop
+          POSTGRES_DB: discount_shop_db
+          RAILS_ENV: production
 
 commands:
   install_flyctl:
@@ -47,7 +47,12 @@ commands:
 
       - checkout
       - run: bundle install
-      - run: bin/rails db:{drop,create,migrate,seed}
+  seed_data:
+    steps:
+      - checkout
+      - run:
+          name: Seed Database
+          command: bin/rails db:{drop,create,migrate,seed}
   run_tests:
     steps:
       - checkout
@@ -72,6 +77,7 @@ jobs:
     steps:
       - checkout
       - install_flyctl
+      - seed_data
       - deploy_to_fly_platform
 
 workflows:
