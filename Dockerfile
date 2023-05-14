@@ -85,4 +85,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 ENV RAILS_LOG_TO_STDOUT=true
-CMD ["/bin/bash", "-c", "bin/rails db:environment:set RAILS_ENV=production; bin/rails db:seed:replant; bin/rails server"]
+CMD ["./bin/rails", "server"]
