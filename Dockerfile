@@ -58,7 +58,7 @@ RUN grep -l '#!/usr/bin/env ruby' /rails/bin/* | xargs sed -i '/^#!/aDir.chdir F
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-RUN bin/rails db:prepare
+RUN SECRET_KEY_BASE=DUMMY ./bin/rails db:prepare
 
 # Final stage for app image
 FROM base
@@ -85,4 +85,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
+ENV RAILS_LOG_TO_STDOUT=true
 CMD ["./bin/rails", "server"]
