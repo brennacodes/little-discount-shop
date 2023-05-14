@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
   include Serializable
   include Statusable
   include Typable
+  include Flashable
 
-  helper_method :current_user, :current_admin?, :alert_type
+  helper_method :current_user,
+                :current_admin?,
+                :alert_type,
+                :flash_message
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
