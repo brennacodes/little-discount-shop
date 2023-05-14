@@ -19,6 +19,7 @@ executors:
           POSTGRES_USER: discount_shop
           POSTGRES_DB: discount_shop_db
           RAILS_ENV: production
+          POSTGRES_PASSWORD:
 
 commands:
   install_flyctl:
