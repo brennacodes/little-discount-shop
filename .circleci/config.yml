@@ -60,6 +60,7 @@ jobs:
     steps:
       - checkout
       - install_dependencies
+      - run: bin/rails db:{create,migrate}
       - run:
           name: Run Tests
           command: |
