@@ -4,6 +4,6 @@ FactoryBot.define do
     invoice
     quantity { rand(5...30) }
     unit_price { Faker::Commerce.price(range: 0..50.0, as_string: false) }
-    status { [1, 2, 3].sample }
+    status { [0, 1, 2].sample }
   end
 end
