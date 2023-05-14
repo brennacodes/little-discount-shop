@@ -42,22 +42,29 @@ commands:
     steps:
       - checkout
       - run: bundle install
-  run_tests:
-    steps:
-      - checkout
-      - run: bin/rails db:{create,migrate}
-      - run: bundle exec rspec
+  # run_tests:
+  #   steps:
+  #     - checkout
+  #     - run: bin/rails db:{create,migrate}
+  #     - run: bundle exec rspec
 
 jobs:
   build:
     executor: app
+    parallelism: 4
     steps:
       - install_dependencies
   test:
     executor: app
+    parallelism: 4
     steps:
+      - checkout
       - install_dependencies
-      - run_tests
+      - run:
+          name: Run Tests
+          command: |
+            TEST=$(circleci tests glob "spec/__tests__/*_spec.rb" | circleci tests split --split-by=timings)
+            bundle exec rspec $TEST
   deploy:
     machine:
       image: ubuntu-2204:2022.04.2
