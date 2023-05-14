@@ -20,11 +20,11 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV['DB_HOST'] || 'localhost' %>
+  host: <%= https://discount-shop-db.fly.dev/ || 'localhost' %>
 
 development:
   <<: *default
-  database: little_discount_shop_development
+  database: discount_shop_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  # url: <%= ENV["DATABASE_URL"] %>
-  database: little_discount_shop_production
-  username: little_discount_shop
-  password: <%= ENV["LITTLE_DISCOUNT_SHOP_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  database: discount-shop-db
+  username: discount_shop
+  password: <%= ENV["OPERATOR_PASSWORD"] %>
