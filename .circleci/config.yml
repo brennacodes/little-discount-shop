@@ -55,10 +55,11 @@ commands:
       - run: bundle exec rspec
 
 jobs:
-  # build:
-  #   executor: app
-  #   steps:
-  #     - install_dependencies
+  build:
+    executor: app
+    steps:
+      - install_dependencies
+      - seed_data
   test:
     executor: app
     steps:
@@ -69,15 +70,14 @@ jobs:
       image: ubuntu-2204:2022.04.2
       docker_layer_caching: true
     steps:
+      - checkout
       - install_flyctl
-      - install_dependencies
-      - seed_data
       - deploy_to_fly_platform
 
 workflows:
-  test_deploy:
+  build_test_deploy:
     jobs:
-      # - build
+      - build
       - test
       - deploy:
           context:
